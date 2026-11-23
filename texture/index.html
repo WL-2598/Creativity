@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>织理 · TEXTURE</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">织理<span>TEXTURE</span></div>
+  <div class="sub">种子裁决一种图案 · 编织、瓷砖与曼陀罗</div>
+</header>
+
+<main class="stage">
+  <canvas id="canvas"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>图案种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一种图案（R）">换纹</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>图案类型</span>
+      <select id="kind"></select>
+    </label>
+
+    <div id="kindbar" class="kindbar"></div>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>同一颗种子永远织出同一张纹样；换一颗种子，便是另一片锦。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>声境 · SOUNDSCAPE</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">声境<span>SOUNDSCAPE</span></div>
+  <div class="sub">种子裁决一段乐谱 · 五声旋律在声波中展开</div>
+</header>
+
+<main class="stage">
+  <canvas id="wave"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>乐谱种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一段乐谱（R）">换曲</button>
+      </div>
+    </label>
+
+    <button id="play" class="play">演奏</button>
+
+    <label class="field">
+      <span>调式</span>
+      <select id="style"></select>
+    </label>
+
+    <div id="stylebar" class="stylebar"></div>
+
+    <label class="field">
+      <span>音量</span>
+      <input id="volume" type="range" min="0" max="1" step="0.01" value="0.35" />
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>同一颗种子永远奏出同一段旋律；换一颗种子，便是另一支曲子。点击「演奏」开始聆听。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

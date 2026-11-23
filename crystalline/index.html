@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>晶境 · CRYSTALLINE — 晶体生长</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="stage"></canvas>
+
+  <header class="topbar">
+    <div class="brand">
+      <h1>晶境</h1>
+      <div class="brand-sub">CRYSTALLINE · 种子落处，晶体自生</div>
+    </div>
+    <div class="seed-box">
+      <label for="seedInput">种子</label>
+      <div class="seed-row">
+        <input id="seedInput" type="text" spellcheck="false" placeholder="种子…">
+        <button id="regrowBtn">再 结</button>
+      </div>
+    </div>
+  </header>
+
+  <aside class="stats">
+    <div class="stat"><b id="statCover">0%</b><span>结晶率</span></div>
+    <div class="stat"><b id="statCluster">0</b><span>晶簇</span></div>
+  </aside>
+
+  <nav class="toolbar">
+    <div class="tool-group">
+      <label class="tool-label">矿种</label>
+      <select id="paletteSel" title="矿种"></select>
+    </div>
+  </nav>
+
+  <div id="toast" class="toast"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

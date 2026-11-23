@@ -76,6 +76,66 @@ const EXHIBITS = [
     href: 'rift/',
     preview: 'previewRift',
   },
+  {
+    key: 'crystalline',
+    name: '晶境',
+    latin: 'CRYSTALLINE',
+    tag: '生长 × 矿质',
+    desc: '一颗种子，一片矿脉。种子落下晶种，晶体按邻接法则逐格生长，聚簇成簇、次序展开，矿物色光在暗处晶闪。',
+    tags: ['晶体生长', '邻接法则', '聚簇统计', '矿质色板'],
+    href: 'crystalline/',
+    preview: 'previewCrystalline',
+  },
+  {
+    key: 'forma',
+    name: '形境',
+    latin: 'FORMA',
+    tag: '植物 × 形态',
+    desc: '一颗种子，一株生灵。L 系统生长出乔木、花卉、芳草与蕨类，枝干渐细、叶花落位，风中摇曳次第舒展。',
+    tags: ['L 系统', '分枝生长', '形态词典', '风动摇曳'],
+    href: 'forma/',
+    preview: 'previewForma',
+  },
+  {
+    key: 'nimbus',
+    name: '云图',
+    latin: 'NIMBUS',
+    tag: '天候 × 气象',
+    desc: '一颗种子，一片天空。云海漂移、雨幕斜织、闪电裂空、雪落无声，晨雾、夜雨、暮霞、雪云四种天候各成世界。',
+    tags: ['程序天气', '云场噪声', '闪电枝杈', '天候风格'],
+    href: 'nimbus/',
+    preview: 'previewNimbus',
+  },
+  {
+    key: 'mechanism',
+    name: '机枢',
+    latin: 'MECHANISM',
+    tag: '机械 × 传动',
+    desc: '一颗种子，一套机械。种子裁决一组相互啮合的齿轮：齿数定传动比、转向交替，外加一只钟摆，静静运转。',
+    tags: ['齿轮啮合', '传动比', '钟摆动力学', '机械布局'],
+    href: 'mechanism/',
+    preview: 'previewMechanism',
+  },
+  {
+    key: 'soundscape',
+    name: '声境',
+    latin: 'SOUNDSCAPE',
+    tag: '乐谱 × 声波',
+    desc: '一颗种子，一段乐谱。种子生成五声旋律与和声进行，Web Audio 实时合成演奏，声波在示波器中实时展开。',
+    tags: ['程序乐谱', '五声音阶', 'Web Audio 合成', '波形可视化'],
+    href: 'soundscape/',
+    preview: 'previewSoundscape',
+  },
+  {
+    key: 'texture',
+    name: '织理',
+    latin: 'TEXTURE',
+    tag: '纹样 × 对称',
+    desc: '一颗种子，一张纹样。经纬交织成编织、四色嵌合成瓷砖、层层放射成曼陀罗，三种图案各成锦面。',
+    tags: ['程序纹样', '经纬编织', '马赛克镶嵌', '旋转对称'],
+    href: 'texture/',
+    preview: 'previewTexture',
+  },
 ];
 
 /* ---------------- 渲染卡片 ---------------- */
@@ -102,7 +162,7 @@ for (const ex of EXHIBITS) {
 /* 统计 */
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="num">${EXHIBITS.length}</div><div class="label">件展品</div></div>
-  <div class="stat"><div class="num">64</div><div class="label">项自动化测试</div></div>
+  <div class="stat"><div class="num">112</div><div class="label">项自动化测试</div></div>
   <div class="stat"><div class="num">0</div><div class="label">外部依赖</div></div>
 `;
 
@@ -169,6 +229,54 @@ const previewers = {
     const render = new RiftRender(canvas);
     const terrain = generateTerrain(randomSeed(), 120, 84);
     render.setTerrain(terrain, findRivers(terrain, 3));
+    render.start();
+  },
+  /* 晶境：一片矿脉 */
+  async previewCrystalline(canvas) {
+    const { CrystalRender } = await import('./crystalline/js/render.js');
+    const { growCrystals } = await import('./crystalline/js/crystal.js');
+    const render = new CrystalRender(canvas);
+    render.setScene(growCrystals(randomSeed(), { width: 60, height: 40, seeds: 3, steps: 90 }));
+    render.start();
+  },
+  /* 形境：一株生灵 */
+  async previewForma(canvas) {
+    const { PlantRender } = await import('./forma/js/render.js');
+    const { generatePlant } = await import('./forma/js/lsystem.js');
+    const render = new PlantRender(canvas);
+    render.setPlant(generatePlant(randomSeed(), 'tree', 4));
+    render.start();
+  },
+  /* 云图：一片天空 */
+  async previewNimbus(canvas) {
+    const { WeatherRender } = await import('./nimbus/js/render.js');
+    const { generateWeather } = await import('./nimbus/js/weather.js');
+    const render = new WeatherRender(canvas);
+    render.setWeather(generateWeather(randomSeed()));
+    render.start();
+  },
+  /* 机枢：一套机械 */
+  async previewMechanism(canvas) {
+    const { MechanismRender } = await import('./mechanism/js/render.js');
+    const { generateMechanism } = await import('./mechanism/js/mechanism.js');
+    const render = new MechanismRender(canvas);
+    render.setMechanism(generateMechanism(randomSeed(), { gears: 5 }));
+    render.start();
+  },
+  /* 声境：一段声波 */
+  async previewSoundscape(canvas) {
+    const { SoundscapeRender } = await import('./soundscape/js/render.js');
+    const { generateScore } = await import('./soundscape/js/melody.js');
+    const render = new SoundscapeRender(canvas);
+    render.setScore(generateScore(randomSeed()));
+    render.start();
+  },
+  /* 织理：一张纹样 */
+  async previewTexture(canvas) {
+    const { TextureRender } = await import('./texture/js/render.js');
+    const { generatePattern } = await import('./texture/js/pattern.js');
+    const render = new TextureRender(canvas);
+    render.setPattern(generatePattern(randomSeed()));
     render.start();
   },
 };

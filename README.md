@@ -17,6 +17,12 @@
 | [**棱镜 PRISM**](prism/) | 几何 × 辉光 | 种子为轴，几何为枝。递归分生与 m 重对称铸就精密辉光的几何构图，可调对称、深度、旋转与色板 |
 | [**流光 LUMEN**](lumen/) | 光绘 × 磷光 | 执光为笔，暗处生辉。种子点亮流光丝带，亦可执笔绘光，磷光在深夜里游走绵长 |
 | [**裂隙 RIFT**](rift/) | 山河 × 地图 | 一纸之间，山河自成。种子生成分形地形，等高线、水系（沿最陡下降寻径）、林雪与图框静默生长 |
+| [**晶境 CRYSTALLINE**](crystalline/) | 生长 × 矿质 | 一颗种子，一片矿脉。晶种按邻接法则逐格生长，聚簇成簇、次序展开，四种矿质色光在暗处晶闪 |
+| [**形境 FORMA**](forma/) | 植物 × 形态 | 一颗种子，一株生灵。L 系统生长出乔木、花卉、芳草与蕨类，枝干渐细、叶花落位，风中摇曳舒展 |
+| [**云图 NIMBUS**](nimbus/) | 天候 × 气象 | 一颗种子，一片天空。云海漂移、雨幕斜织、闪电裂空、雪落无声，晨雾、夜雨、暮霞、雪云各成世界 |
+| [**机枢 MECHANISM**](mechanism/) | 机械 × 传动 | 一颗种子，一套机械。齿数定传动比、转向交替，外加一只钟摆，齿轮切向布局、相互啮合，静静运转 |
+| [**声境 SOUNDSCAPE**](soundscape/) | 乐谱 × 声波 | 一颗种子，一段乐谱。五声旋律与和声进行由种子生成，Web Audio 实时合成演奏，声波在示波器中展开 |
+| [**织理 TEXTURE**](texture/) | 纹样 × 对称 | 一颗种子，一张纹样。经纬交织成编织、四色嵌合成瓷砖、层层放射成曼陀罗，三种图案各成锦面 |
 
 入口：仓库根目录的 **银河展厅**（`index.html`），每件展品配真实引擎的实时预览。
 
@@ -32,7 +38,7 @@ node tools/serve.mjs            # 默认 8080，服务整个仓库
 
 ## 🧪 测试
 
-仓库共 **64 项自动化测试**，覆盖全部展品的核心逻辑与引擎调度：
+仓库共 **112 项自动化测试**，覆盖全部展品的核心逻辑与引擎调度：
 
 ```bash
 node --test test/composition.test.mjs     # 星澜：作曲核心
@@ -45,6 +51,12 @@ node --test test/floating.test.mjs       # 浮生：生态确定性、捕食、�
 node --test test/prism.test.mjs          # 棱镜：几何确定性、对称、深度、边界
 node --test test/lumen.test.mjs          # 流光：光带确定性、数量钳制、绵延性
 node --test test/rift.test.mjs           # 裂隙：地形确定性、高程、水系寻径
+node --test test/crystalline.test.mjs    # 晶境：生长确定性、聚簇连通、统计一致
+node --test test/forma.test.mjs          # 形境：L 系统确定性、深度、形态差异、包围盒
+node --test test/nimbus.test.mjs         # 云图：天候确定性、风格基调、云场噪声
+node --test test/mechanism.test.mjs      # 机枢：啮合布局、传动比、不重叠、统计
+node --test test/soundscape.test.mjs     # 声境：乐谱确定性、音阶约束、节拍自洽
+node --test test/texture.test.mjs        # 织理：图案确定性、编织/瓷砖/曼陀罗合法性
 ```
 
 ## 🏗 仓库结构
@@ -61,8 +73,14 @@ floating/               展品四：浮生（生态瓶 × 涌现）
 prism/                  展品五：棱镜（递归几何 × 辉光）
 lumen/                  展品六：流光（光绘 × 磷光）
 rift/                   展品七：裂隙（程序山河 × 地图）
+crystalline/            展品八：晶境（晶体生长 × 矿质）
+forma/                  展品九：形境（L 系统植物 × 形态）
+nimbus/                 展品十：云图（程序天气 × 气象）
+mechanism/              展品十一：机枢（齿轮机械 × 传动）
+soundscape/             展品十二：声境（程序乐谱 × 声波）
+texture/                展品十三：织理（程序纹样 × 对称）
 tools/serve.mjs         零依赖静态服务器（支持目录直达）
-test/                   全部自动化测试
+test/                   全部自动化测试（16 个套件，112 项）
 ```
 
 ## 🌱 设计哲学

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>机枢 · MECHANISM</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">机枢<span>MECHANISM</span></div>
+  <div class="sub">种子裁决一组啮合齿轮 · 齿数、传动比与摆锤</div>
+</header>
+
+<main class="stage">
+  <canvas id="stage"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>机构种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一套机构（R）">换构</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>齿轮数量</span>
+      <select id="gears">
+        <option value="3">3 只</option>
+        <option value="4">4 只</option>
+        <option value="5">5 只</option>
+        <option value="6">6 只</option>
+        <option value="7">7 只</option>
+        <option value="8">8 只</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>相邻齿轮必然啮合：齿数决定传动比，转向彼此交替。换一颗种子，便是另一套机械。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
