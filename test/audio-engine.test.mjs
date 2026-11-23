@@ -5,7 +5,7 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { AudioEngine } from '../js/audio/engine.js';
+import { AudioEngine } from '../starlark/js/audio/engine.js';
 
 /* ---------- fake AudioContext ---------- */
 function param() {

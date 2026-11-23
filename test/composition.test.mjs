@@ -8,7 +8,7 @@ import {
   rngFromSeed, randInt, weightedPick, scaleNote, chordVoices,
   generateProgression, generateMotif, developMotif, euclid,
   createWorld, SCALES, midiToFreq, MOOD_PRESETS,
-} from '../js/audio/composition.js';
+} from '../starlark/js/audio/composition.js';
 
 test('RNG：同种子产生完全一致的序列', () => {
   const a = [...Array(10).keys()].map(() => rngFromSeed(42)());

@@ -3,32 +3,9 @@
  * 种子驱动的音阶、和声进行、动机发展、欧几里得节奏。
  * 一颗种子 => 一个自洽的"音乐宇宙"。
  */
+import { rngFromSeed, randInt, weightedPick, clamp, randomSeed } from '../../../shared/rng.js';
 
-/* ------------------------------------------------------------------ *
- * 可播种随机数（mulberry32）—— 保证同一颗种子产生完全一致的世界
- * ------------------------------------------------------------------ */
-export function rngFromSeed(seed) {
-  let a = (seed >>> 0) || 1;
-  return function rng() {
-    a |= 0; a = (a + 0x6D2B79F5) | 0;
-    let t = Math.imul(a ^ (a >>> 15), 1 | a);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-/** 从 rng 中取一个区间整数 [min, max] */
-export function randInt(rng, min, max) {
-  return min + Math.floor(rng() * (max - min + 1));
-}
-
-/** 从数组中按权重取一项：items 为 [{w, ...}] 形式 */
-export function weightedPick(rng, items) {
-  const total = items.reduce((s, it) => s + it.w, 0);
-  let r = rng() * total;
-  for (const it of items) { r -= it.w; if (r <= 0) return it; }
-  return items[items.length - 1];
-}
+export { rngFromSeed, randInt, weightedPick, clamp, randomSeed };
 
 /* ------------------------------------------------------------------ *
  * 音阶库 —— 每条音阶是相对根音的半音偏移
@@ -252,13 +229,4 @@ export function createWorld(seed, moodKey = null) {
     world.motifs.push(generateMotif(rng, scale, 8));
   }
   return world;
-}
-
-/** 世界整体随机化（保持结构，仅换种子） */
-export function randomSeed() {
-  return Math.floor(Math.random() * 0xFFFFFFFF);
-}
-
-export function clamp(v, min, max) {
-  return Math.min(max, Math.max(min, v));
 }

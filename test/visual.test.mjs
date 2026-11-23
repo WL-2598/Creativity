@@ -4,8 +4,8 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { VisualEngine } from '../js/visual/renderer.js';
-import { createWorld } from '../js/audio/composition.js';
+import { VisualEngine } from '../starlark/js/visual/renderer.js';
+import { createWorld } from '../starlark/js/audio/composition.js';
 
 /* ---------- mock 环境 ---------- */
 function makeMockCtx() {

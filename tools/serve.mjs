@@ -5,7 +5,7 @@
  * 绑定 0.0.0.0，兼容预览环境的代理访问。
  */
 import { createServer } from 'node:http';
-import { readFile } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -36,9 +36,17 @@ const server = createServer(async (req, res) => {
       res.writeHead(403).end('Forbidden');
       return;
     }
-    const data = await readFile(filePath);
+    let target = filePath;
+    // 目录请求 => 服务其 index.html（展品直达链接）
+    try {
+      const st = await stat(filePath);
+      if (st.isDirectory()) target = join(filePath, 'index.html');
+    } catch {
+      // 文件不存在，保持原路径触发 404
+    }
+    const data = await readFile(target);
     res.writeHead(200, {
-      'Content-Type': MIME[extname(filePath)] || 'application/octet-stream',
+      'Content-Type': MIME[extname(target)] || 'application/octet-stream',
       'Cache-Control': 'no-cache',
     });
     res.end(data);
@@ -48,5 +56,5 @@ const server = createServer(async (req, res) => {
 });
 
 server.listen(port, '0.0.0.0', () => {
-  console.log(`星澜 STELLAR ECHO 已启动: http://localhost:${port}`);
+  console.log(`银河展厅 CREATIVITY WAREHOUSE 已启动: http://localhost:${port}`);
 });
