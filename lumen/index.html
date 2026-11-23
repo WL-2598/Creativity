@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>流光 · LUMEN — 光绘</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="stage"></canvas>
+
+  <header class="topbar">
+    <div class="brand">
+      <h1>流光</h1>
+      <div class="brand-sub">LUMEN · 执光为笔，暗处生辉</div>
+    </div>
+    <div class="seed-box">
+      <label for="seedInput">种子</label>
+      <div class="seed-row">
+        <input id="seedInput" type="text" spellcheck="false" placeholder="种子…">
+        <button id="relightBtn">点 亮</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toolbar">
+    <div class="tool-group">
+      <label class="tool-label">光色</label>
+      <select id="paletteSel" title="光色"></select>
+    </div>
+    <div class="tool-group">
+      <label class="tool-label">笔宽 <b id="widthVal"></b></label>
+      <input type="range" id="widthRange" min="1" max="10" step="1">
+    </div>
+    <button id="modeBtn" class="primary">执笔绘光</button>
+    <button id="clearBtn">净迹</button>
+  </nav>
+
+  <div id="toast" class="toast"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>裂隙 · RIFT — 程序山河</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="stage"></canvas>
+
+  <header class="topbar">
+    <div class="brand">
+      <h1>裂隙</h1>
+      <div class="brand-sub">RIFT · 一纸之间，山河自成</div>
+    </div>
+    <div class="seed-box">
+      <label for="seedInput">种子</label>
+      <div class="seed-row">
+        <input id="seedInput" type="text" spellcheck="false" placeholder="种子…">
+        <button id="chartBtn">成 图</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toolbar">
+    <div class="tool-group">
+      <label class="tool-label">风格</label>
+      <select id="styleSel" title="地图风格"></select>
+    </div>
+    <span class="hint-inline">地图缓缓流转，等高线静默生长</span>
+  </nav>
+
+  <div id="toast" class="toast"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

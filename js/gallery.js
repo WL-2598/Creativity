@@ -36,6 +36,46 @@ const EXHIBITS = [
     href: 'storyteller/',
     preview: 'previewStory',
   },
+  {
+    key: 'floating',
+    name: '浮生',
+    latin: 'FLOATING LIVES',
+    tag: '生态 × 涌现',
+    desc: '一瓶之中，万物自生。种子在瓶中布下浮游、游鱼与水草，它们在光照下生长、捕食、群游、繁衍与死亡，涌现生机。',
+    tags: ['生态模拟', '涌现行为', '种群动态', '玻璃瓶渲染'],
+    href: 'floating/',
+    preview: 'previewFloating',
+  },
+  {
+    key: 'prism',
+    name: '棱镜',
+    latin: 'PRISM',
+    tag: '几何 × 辉光',
+    desc: '种子为轴，几何为枝。递归分生与多重对称铸就精密辉光的几何构图，于缓缓旋转中显现数学之美。',
+    tags: ['递归分形', '对称构图', '辉光渲染', '参数调控'],
+    href: 'prism/',
+    preview: 'previewPrism',
+  },
+  {
+    key: 'lumen',
+    name: '流光',
+    latin: 'LUMEN',
+    tag: '光绘 × 磷光',
+    desc: '执光为笔，暗处生辉。种子点亮流光丝带，亦可执笔绘光，让磷光在深夜里游走绵长。',
+    tags: ['光绘艺术', '辉光丝带', '执笔绘光', '光色流转'],
+    href: 'lumen/',
+    preview: 'previewLumen',
+  },
+  {
+    key: 'rift',
+    name: '裂隙',
+    latin: 'RIFT',
+    tag: '山河 × 地图',
+    desc: '一纸之间，山河自成。种子生成分形地形，等高线、水系、林雪与图框在其中静默生长。',
+    tags: ['程序地形', '等高线', '水系寻径', '地图美学'],
+    href: 'rift/',
+    preview: 'previewRift',
+  },
 ];
 
 /* ---------------- 渲染卡片 ---------------- */
@@ -62,7 +102,7 @@ for (const ex of EXHIBITS) {
 /* 统计 */
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="num">${EXHIBITS.length}</div><div class="label">件展品</div></div>
-  <div class="stat"><div class="num">38</div><div class="label">项自动化测试</div></div>
+  <div class="stat"><div class="num">64</div><div class="label">项自动化测试</div></div>
   <div class="stat"><div class="num">0</div><div class="label">外部依赖</div></div>
 `;
 
@@ -95,6 +135,41 @@ const previewers = {
     const story = createStory(randomSeed(), 'stardust');
     visual.setStory(story);
     visual.start();
+  },
+  /* 浮生：生态瓶 */
+  async previewFloating(canvas) {
+    const { EcoRender } = await import('./floating/js/render.js');
+    const { createEcosystem, bindRng } = await import('./floating/js/ecology.js');
+    const render = new EcoRender(canvas);
+    const state = bindRng(createEcosystem(randomSeed(), { fish: 3, plankton: 24, plant: 4 }), 1);
+    render.setState(state);
+    render.start();
+  },
+  /* 棱镜：几何构图 */
+  async previewPrism(canvas) {
+    const { PrismRender } = await import('./prism/js/render.js');
+    const { generateGeometry } = await import('./prism/js/geometry.js');
+    const render = new PrismRender(canvas);
+    const { elements } = generateGeometry(randomSeed(), { symmetry: 6, depth: 3 });
+    render.setScene(elements);
+    render.start();
+  },
+  /* 流光：光带 */
+  async previewLumen(canvas) {
+    const { LumenRender } = await import('./lumen/js/render.js');
+    const { generateRibbons } = await import('./lumen/js/lumen.js');
+    const render = new LumenRender(canvas);
+    render.setRibbons(generateRibbons(randomSeed(), { count: 5, W: render.W, H: render.H }));
+    render.start();
+  },
+  /* 裂隙：山河图 */
+  async previewRift(canvas) {
+    const { RiftRender } = await import('./rift/js/render.js');
+    const { generateTerrain, findRivers } = await import('./rift/js/terrain.js');
+    const render = new RiftRender(canvas);
+    const terrain = generateTerrain(randomSeed(), 120, 84);
+    render.setTerrain(terrain, findRivers(terrain, 3));
+    render.start();
   },
 };
 
