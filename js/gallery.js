@@ -256,6 +256,16 @@ const EXHIBITS = [
     href: 'glitch/',
     preview: 'previewGlitch',
   },
+  {
+    key: 'firework',
+    name: '焰火',
+    latin: 'FIREWORK',
+    tag: '绽放 × 夜空',
+    desc: '一颗种子，一场焰火。每枚焰火有独立的发射延迟与爆点，升空、绽放、坠落，部分还会二次爆裂。',
+    tags: ['升空拖尾', '球状绽放', '二次爆裂', '四色焰调'],
+    href: 'firework/',
+    preview: 'previewFirework',
+  },
 ];
 
 /* ---------------- 渲染卡片 ---------------- */
@@ -282,7 +292,7 @@ for (const ex of EXHIBITS) {
 /* 统计 */
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="num">${EXHIBITS.length}</div><div class="label">件展品</div></div>
-  <div class="stat"><div class="num">189</div><div class="label">项自动化测试</div></div>
+  <div class="stat"><div class="num">196</div><div class="label">项自动化测试</div></div>
   <div class="stat"><div class="num">0</div><div class="label">外部依赖</div></div>
 `;
 
@@ -493,6 +503,14 @@ const previewers = {
     const { generateGlitch } = await import('./glitch/js/glitch.js');
     const render = new GlitchRender(canvas);
     render.setGlitch(generateGlitch(randomSeed(), { bands: 6, scanlines: 16 }));
+    render.start();
+  },
+  /* 焰火：一场焰火 */
+  async previewFirework(canvas) {
+    const { FireworkRender } = await import('./firework/js/render.js');
+    const { generateFireworks } = await import('./firework/js/firework.js');
+    const render = new FireworkRender(canvas);
+    render.setShow(generateFireworks(randomSeed(), { count: 5 }));
     render.start();
   },
 };
