@@ -2,7 +2,7 @@
  * gallery.js — 银河展厅驱动
  * 渲染展品卡片，并为每件展品接入其真实引擎的实时预览。
  */
-import { rngFromSeed, randomSeed } from './shared/rng.js';
+import { rngFromSeed, randomSeed } from '../shared/rng.js';
 
 /* ---------------- 展品档案 ---------------- */
 const EXHIBITS = [
@@ -340,8 +340,8 @@ document.getElementById('stats').innerHTML = `
 const previewers = {
   /* 星澜：小型星云 */
   async previewStarlark(canvas) {
-    const { VisualEngine } = await import('./starlark/js/visual/renderer.js');
-    const { createWorld } = await import('./starlark/js/audio/composition.js');
+    const { VisualEngine } = await import('../starlark/js/visual/renderer.js');
+    const { createWorld } = await import('../starlark/js/audio/composition.js');
     const engine = new VisualEngine(canvas);
     engine.setMode('nebula');
     engine.setPalette('stellar');
@@ -350,8 +350,8 @@ const previewers = {
   },
   /* 墨韵：一帧远山 */
   async previewInk(canvas) {
-    const { InkRenderer } = await import('./inkflow/js/ink.js');
-    const { generateMotif } = await import('./inkflow/js/motifs.js');
+    const { InkRenderer } = await import('../inkflow/js/ink.js');
+    const { generateMotif } = await import('../inkflow/js/motifs.js');
     const ink = new InkRenderer(canvas);
     const strokes = generateMotif(rngFromSeed(randomSeed()), 'mountain', ink.W, ink.H);
     ink.setScene(strokes, 1, 0.55);
@@ -359,8 +359,8 @@ const previewers = {
   },
   /* 织梦：主题星图 */
   async previewStory(canvas) {
-    const { StoryVisual } = await import('./storyteller/js/visual.js');
-    const { createStory } = await import('./storyteller/js/story.js');
+    const { StoryVisual } = await import('../storyteller/js/visual.js');
+    const { createStory } = await import('../storyteller/js/story.js');
     const visual = new StoryVisual(canvas);
     const story = createStory(randomSeed(), 'stardust');
     visual.setStory(story);
@@ -368,8 +368,8 @@ const previewers = {
   },
   /* 浮生：生态瓶 */
   async previewFloating(canvas) {
-    const { EcoRender } = await import('./floating/js/render.js');
-    const { createEcosystem, bindRng } = await import('./floating/js/ecology.js');
+    const { EcoRender } = await import('../floating/js/render.js');
+    const { createEcosystem, bindRng } = await import('../floating/js/ecology.js');
     const render = new EcoRender(canvas);
     const state = bindRng(createEcosystem(randomSeed(), { fish: 3, plankton: 24, plant: 4 }), 1);
     render.setState(state);
@@ -377,8 +377,8 @@ const previewers = {
   },
   /* 棱镜：几何构图 */
   async previewPrism(canvas) {
-    const { PrismRender } = await import('./prism/js/render.js');
-    const { generateGeometry } = await import('./prism/js/geometry.js');
+    const { PrismRender } = await import('../prism/js/render.js');
+    const { generateGeometry } = await import('../prism/js/geometry.js');
     const render = new PrismRender(canvas);
     const { elements } = generateGeometry(randomSeed(), { symmetry: 6, depth: 3 });
     render.setScene(elements);
@@ -386,16 +386,16 @@ const previewers = {
   },
   /* 流光：光带 */
   async previewLumen(canvas) {
-    const { LumenRender } = await import('./lumen/js/render.js');
-    const { generateRibbons } = await import('./lumen/js/lumen.js');
+    const { LumenRender } = await import('../lumen/js/render.js');
+    const { generateRibbons } = await import('../lumen/js/lumen.js');
     const render = new LumenRender(canvas);
     render.setRibbons(generateRibbons(randomSeed(), { count: 5, W: render.W, H: render.H }));
     render.start();
   },
   /* 裂隙：山河图 */
   async previewRift(canvas) {
-    const { RiftRender } = await import('./rift/js/render.js');
-    const { generateTerrain, findRivers } = await import('./rift/js/terrain.js');
+    const { RiftRender } = await import('../rift/js/render.js');
+    const { generateTerrain, findRivers } = await import('../rift/js/terrain.js');
     const render = new RiftRender(canvas);
     const terrain = generateTerrain(randomSeed(), 120, 84);
     render.setTerrain(terrain, findRivers(terrain, 3));
@@ -403,184 +403,184 @@ const previewers = {
   },
   /* 晶境：一片矿脉 */
   async previewCrystalline(canvas) {
-    const { CrystalRender } = await import('./crystalline/js/render.js');
-    const { growCrystals } = await import('./crystalline/js/crystal.js');
+    const { CrystalRender } = await import('../crystalline/js/render.js');
+    const { growCrystals } = await import('../crystalline/js/crystal.js');
     const render = new CrystalRender(canvas);
     render.setScene(growCrystals(randomSeed(), { width: 60, height: 40, seeds: 3, steps: 90 }));
     render.start();
   },
   /* 形境：一株生灵 */
   async previewForma(canvas) {
-    const { PlantRender } = await import('./forma/js/render.js');
-    const { generatePlant } = await import('./forma/js/lsystem.js');
+    const { PlantRender } = await import('../forma/js/render.js');
+    const { generatePlant } = await import('../forma/js/lsystem.js');
     const render = new PlantRender(canvas);
     render.setPlant(generatePlant(randomSeed(), 'tree', 4));
     render.start();
   },
   /* 云图：一片天空 */
   async previewNimbus(canvas) {
-    const { WeatherRender } = await import('./nimbus/js/render.js');
-    const { generateWeather } = await import('./nimbus/js/weather.js');
+    const { WeatherRender } = await import('../nimbus/js/render.js');
+    const { generateWeather } = await import('../nimbus/js/weather.js');
     const render = new WeatherRender(canvas);
     render.setWeather(generateWeather(randomSeed()));
     render.start();
   },
   /* 机枢：一套机械 */
   async previewMechanism(canvas) {
-    const { MechanismRender } = await import('./mechanism/js/render.js');
-    const { generateMechanism } = await import('./mechanism/js/mechanism.js');
+    const { MechanismRender } = await import('../mechanism/js/render.js');
+    const { generateMechanism } = await import('../mechanism/js/mechanism.js');
     const render = new MechanismRender(canvas);
     render.setMechanism(generateMechanism(randomSeed(), { gears: 5 }));
     render.start();
   },
   /* 声境：一段声波 */
   async previewSoundscape(canvas) {
-    const { SoundscapeRender } = await import('./soundscape/js/render.js');
-    const { generateScore } = await import('./soundscape/js/melody.js');
+    const { SoundscapeRender } = await import('../soundscape/js/render.js');
+    const { generateScore } = await import('../soundscape/js/melody.js');
     const render = new SoundscapeRender(canvas);
     render.setScore(generateScore(randomSeed()));
     render.start();
   },
   /* 织理：一张纹样 */
   async previewTexture(canvas) {
-    const { TextureRender } = await import('./texture/js/render.js');
-    const { generatePattern } = await import('./texture/js/pattern.js');
+    const { TextureRender } = await import('../texture/js/render.js');
+    const { generatePattern } = await import('../texture/js/pattern.js');
     const render = new TextureRender(canvas);
     render.setPattern(generatePattern(randomSeed()));
     render.start();
   },
   /* 织星：一片星网 */
   async previewStarweb(canvas) {
-    const { StarRender } = await import('./starweb/js/render.js');
-    const { generateStarfield } = await import('./starweb/js/constellation.js');
+    const { StarRender } = await import('../starweb/js/render.js');
+    const { generateStarfield } = await import('../starweb/js/constellation.js');
     const render = new StarRender(canvas);
     render.setField(generateStarfield(randomSeed(), { stars: 22, link: 1 }));
     render.start();
   },
   /* 拓境：一幅版画 */
   async previewPrint(canvas) {
-    const { PrintRender } = await import('./print/js/render.js');
-    const { generatePrint } = await import('./print/js/print.js');
+    const { PrintRender } = await import('../print/js/render.js');
+    const { generatePrint } = await import('../print/js/print.js');
     const render = new PrintRender(canvas);
     render.setPrint(generatePrint(randomSeed(), { plates: 3 }));
     render.start();
   },
   /* 脉境：一张脉网 */
   async previewPulse(canvas) {
-    const { PulseRender } = await import('./pulse/js/render.js');
-    const { generatePulseNet } = await import('./pulse/js/pulse.js');
+    const { PulseRender } = await import('../pulse/js/render.js');
+    const { generatePulseNet } = await import('../pulse/js/pulse.js');
     const render = new PulseRender(canvas);
     render.setNet(generatePulseNet(randomSeed(), { nodes: 14 }));
     render.start();
   },
   /* 晕境：一处天象 */
   async previewHalo(canvas) {
-    const { HaloRender } = await import('./halo/js/render.js');
-    const { generateHalo } = await import('./halo/js/halo.js');
+    const { HaloRender } = await import('../halo/js/render.js');
+    const { generateHalo } = await import('../halo/js/halo.js');
     const render = new HaloRender(canvas);
     render.setScene(generateHalo(randomSeed()));
     render.start();
   },
   /* 烟境：一处烟境 */
   async previewSmoke(canvas) {
-    const { SmokeRender } = await import('./smoke/js/render.js');
-    const { generateSmoke } = await import('./smoke/js/smoke.js');
+    const { SmokeRender } = await import('../smoke/js/render.js');
+    const { generateSmoke } = await import('../smoke/js/smoke.js');
     const render = new SmokeRender(canvas);
     render.setScene(generateSmoke(randomSeed(), { sources: 2, field: 24 }));
     render.start();
   },
   /* 纸境：一张折痕图 */
   async previewOrigami(canvas) {
-    const { OrigamiRender } = await import('./origami/js/render.js');
-    const { generateOrigami } = await import('./origami/js/origami.js');
+    const { OrigamiRender } = await import('../origami/js/render.js');
+    const { generateOrigami } = await import('../origami/js/origami.js');
     const render = new OrigamiRender(canvas);
     render.setFold(generateOrigami(randomSeed(), { grid: 10 }));
     render.start();
   },
   /* 沙盘：一处沙境 */
   async previewSandpit(canvas) {
-    const { SandRender } = await import('./sandpit/js/render.js');
-    const { generateSandscape } = await import('./sandpit/js/sand.js');
+    const { SandRender } = await import('../sandpit/js/render.js');
+    const { generateSandscape } = await import('../sandpit/js/sand.js');
     const render = new SandRender(canvas);
     render.setState(generateSandscape(randomSeed(), { width: 40, height: 22 }));
     render.start();
   },
   /* 潮汐：一处海域 */
   async previewTide(canvas) {
-    const { TideRender } = await import('./tide/js/render.js');
-    const { generateTide } = await import('./tide/js/tide.js');
+    const { TideRender } = await import('../tide/js/render.js');
+    const { generateTide } = await import('../tide/js/tide.js');
     const render = new TideRender(canvas);
     render.setTide(generateTide(randomSeed(), { hours: 48 }));
     render.start();
   },
   /* 回廊：一条长廊 */
   async previewPromenade(canvas) {
-    const { PromenadeRender } = await import('./promenade/js/render.js');
-    const { generatePromenade } = await import('./promenade/js/promenade.js');
+    const { PromenadeRender } = await import('../promenade/js/render.js');
+    const { generatePromenade } = await import('../promenade/js/promenade.js');
     const render = new PromenadeRender(canvas);
     render.setHall(generatePromenade(randomSeed(), { columns: 7, arches: 4 }));
     render.start();
   },
   /* 花相：一席瓶花 */
   async previewFloral(canvas) {
-    const { FloralRender } = await import('./floral/js/render.js');
-    const { generateFloral } = await import('./floral/js/floral.js');
+    const { FloralRender } = await import('../floral/js/render.js');
+    const { generateFloral } = await import('../floral/js/floral.js');
     const render = new FloralRender(canvas);
     render.setArrangement(generateFloral(randomSeed(), { materials: 3 }));
     render.start();
   },
   /* 棋境：一局棋 */
   async previewGo(canvas) {
-    const { GoRender } = await import('./go/js/render.js');
-    const { generateGo } = await import('./go/js/go.js');
+    const { GoRender } = await import('../go/js/render.js');
+    const { generateGo } = await import('../go/js/go.js');
     const render = new GoRender(canvas);
     render.setGame(generateGo(randomSeed(), { size: 19 }));
     render.start();
   },
   /* 光斑：一帧故障 */
   async previewGlitch(canvas) {
-    const { GlitchRender } = await import('./glitch/js/render.js');
-    const { generateGlitch } = await import('./glitch/js/glitch.js');
+    const { GlitchRender } = await import('../glitch/js/render.js');
+    const { generateGlitch } = await import('../glitch/js/glitch.js');
     const render = new GlitchRender(canvas);
     render.setGlitch(generateGlitch(randomSeed(), { bands: 6, scanlines: 16 }));
     render.start();
   },
   /* 焰火：一场焰火 */
   async previewFirework(canvas) {
-    const { FireworkRender } = await import('./firework/js/render.js');
-    const { generateFireworks } = await import('./firework/js/firework.js');
+    const { FireworkRender } = await import('../firework/js/render.js');
+    const { generateFireworks } = await import('../firework/js/firework.js');
     const render = new FireworkRender(canvas);
     render.setShow(generateFireworks(randomSeed(), { count: 5 }));
     render.start();
   },
   /* 石阵：一处石阵 */
   async previewStones(canvas) {
-    const { StonesRender } = await import('./stones/js/render.js');
-    const { generateStoneField } = await import('./stones/js/stones.js');
+    const { StonesRender } = await import('../stones/js/render.js');
+    const { generateStoneField } = await import('../stones/js/stones.js');
     const render = new StonesRender(canvas);
     render.setField(generateStoneField(randomSeed(), { count: 8 }));
     render.start();
   },
   /* 茶境：一席茶 */
   async previewTea(canvas) {
-    const { TeaRender } = await import('./tea/js/render.js');
-    const { generateTeaSet } = await import('./tea/js/tea.js');
+    const { TeaRender } = await import('../tea/js/render.js');
+    const { generateTeaSet } = await import('../tea/js/tea.js');
     const render = new TeaRender(canvas);
     render.setSet(generateTeaSet(randomSeed(), { guests: 4 }));
     render.start();
   },
   /* 钟磬：一列编钟 */
   async previewBell(canvas) {
-    const { BellRender } = await import('./bell/js/render.js');
-    const { generateBells } = await import('./bell/js/bell.js');
+    const { BellRender } = await import('../bell/js/render.js');
+    const { generateBells } = await import('../bell/js/bell.js');
     const render = new BellRender(canvas);
     render.setSet(generateBells(randomSeed(), { count: 5 }));
     render.start();
   },
   /* 影戏：几具皮影 */
   async previewShadow(canvas) {
-    const { ShadowRender } = await import('./shadow/js/render.js');
-    const { generatePuppets } = await import('./shadow/js/shadow.js');
+    const { ShadowRender } = await import('../shadow/js/render.js');
+    const { generatePuppets } = await import('../shadow/js/shadow.js');
     const render = new ShadowRender(canvas);
     render.setSet(generatePuppets(randomSeed(), { count: 2 }));
     render.start();
