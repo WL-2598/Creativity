@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>星澜 STELLAR ECHO — 生成式环境音乐 × 视觉宇宙</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 视觉舞台 -->
+  <canvas id="stage"></canvas>
+
+  <!-- 顶栏 -->
+  <header class="topbar">
+    <div class="brand">
+      <h1>星澜</h1>
+      <div class="brand-sub">STELLAR ECHO · 生成式环境音乐 × 视觉宇宙</div>
+    </div>
+    <div class="seed-box">
+      <label for="seedInput">宇宙种子</label>
+      <div class="seed-row">
+        <input id="seedInput" type="text" spellcheck="false" placeholder="输入种子…">
+        <button id="applySeed" title="以该种子开启宇宙">行 入</button>
+        <button id="copySeed" title="复制种子">⧉</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 控制面板 -->
+  <aside class="panel" id="panel">
+    <section class="transport">
+      <button id="playBtn" class="primary">▶ 奏响</button>
+      <button id="randomBtn">⚁ 新宇宙</button>
+      <button id="evolveBtn" class="toggle on">呼吸 · 开</button>
+    </section>
+
+    <section class="block">
+      <div class="sec-title">心境预设</div>
+      <div class="preset-row" id="presetRow"></div>
+    </section>
+
+    <section class="block">
+      <div class="sec-title">声音</div>
+      <div class="ctrl-grid">
+        <div class="ctrl"><label>速度 <b id="vTempo"></b></label><input type="range" id="sTempo" min="50" max="120" step="1"></div>
+        <div class="ctrl"><label>密度 <b id="vDensity"></b></label><input type="range" id="sDensity" min="0.1" max="1" step="0.01"></div>
+        <div class="ctrl"><label>亮度 <b id="vBrightness"></b></label><input type="range" id="sBrightness" min="0.2" max="0.95" step="0.01"></div>
+        <div class="ctrl"><label>流动 <b id="vMotion"></b></label><input type="range" id="sMotion" min="0.1" max="1" step="0.01"></div>
+        <div class="ctrl"><label>混响 <b id="vReverb"></b></label><input type="range" id="sReverb" min="0" max="1" step="0.01"></div>
+        <div class="ctrl"><label>延迟 <b id="vDelay"></b></label><input type="range" id="sDelay" min="0" max="0.85" step="0.01"></div>
+        <div class="ctrl"><label>滤波 <b id="vCutoff"></b></label><input type="range" id="sCutoff" min="0.3" max="0.95" step="0.01"></div>
+        <div class="ctrl"><label>音量 <b id="vVolume"></b></label><input type="range" id="sVolume" min="0" max="1" step="0.01"></div>
+      </div>
+      <div class="select-row">
+        <select id="selScale" title="音阶"></select>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="sec-title">视觉</div>
+      <div class="select-row two">
+        <select id="selMode" title="视觉模式">
+          <option value="nebula">星云</option>
+          <option value="ripples">涟漪</option>
+          <option value="mandala">织锦</option>
+          <option value="trails">星轨</option>
+        </select>
+        <select id="selPalette" title="调色板"></select>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="sec-title">留痕</div>
+      <div class="record-row">
+        <button id="recordBtn">○ 开始录音</button>
+        <span id="recInfo" class="rec-info"></span>
+      </div>
+    </section>
+
+    <footer class="hint">空格 奏响/静默 · R 新宇宙 · E 呼吸</footer>
+  </aside>
+
+  <!-- 启动提示 -->
+  <div id="gate" class="gate">
+    <div class="gate-inner">
+      <div class="gate-orb"></div>
+      <h2>星澜 · STELLAR ECHO</h2>
+      <p>一颗种子，一个宇宙。<br>声音与光影在浏览器中实时生成，永不重复。</p>
+      <button id="gateBtn">进 入 宇 宙</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

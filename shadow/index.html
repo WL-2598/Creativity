@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>影戏 · SHADOW</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">影戏<span>SHADOW</span></div>
+  <div class="sub">种子布下几具皮影 · 灯火游走，影随光长</div>
+</header>
+
+<main class="stage">
+  <canvas id="screen"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>皮影种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一具皮影（R）">换影</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>灯调</span>
+      <select id="tone"></select>
+    </label>
+
+    <div id="tonebar" class="tonebar"></div>
+
+    <label class="field">
+      <span>影数</span>
+      <select id="count">
+        <option value="1">1 影</option>
+        <option value="2" selected>2 影</option>
+        <option value="3">3 影</option>
+        <option value="5">5 影</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>灯火沿幕顶巡行，皮影的每个关节都按光源位置投影到底幕：影长与灯的高度角相关，方向与灯火的方位相反。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

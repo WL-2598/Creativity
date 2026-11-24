@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>织梦 · STORYWEAVER — 叙事星图</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 星图 -->
+  <canvas id="stage"></canvas>
+
+  <!-- 顶栏 -->
+  <header class="topbar">
+    <div class="brand">
+      <h1>织梦</h1>
+      <div class="brand-sub">STORYWEAVER · 一颗种子，一则星夜的故事</div>
+    </div>
+    <div class="seed-box">
+      <label for="seedInput">种子</label>
+      <div class="seed-row">
+        <input id="seedInput" type="text" spellcheck="false" placeholder="种子…">
+        <button id="weaveBtn">再织一则</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 叙事台 -->
+  <main class="story-stage">
+    <h2 id="storyTitle" class="story-title"></h2>
+    <p id="storyAuthor" class="story-author"></p>
+    <div id="text" class="story-text"></div>
+  </main>
+
+  <!-- 工具栏 -->
+  <nav class="toolbar">
+    <div class="tool-group">
+      <label class="tool-label">主题</label>
+      <select id="themeSel" title="叙事主题"></select>
+    </div>
+    <button id="replayBtn">重显</button>
+  </nav>
+
+  <footer class="hint">空格 重显 · W 再织一则</footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

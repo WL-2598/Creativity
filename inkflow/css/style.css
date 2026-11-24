@@ -1,0 +1,284 @@
+/* ==================================================================
+   墨韵 INK RESONANCE — 水墨美学界面
+   宣纸暖白 · 墨黑 · 朱砂一点
+   ================================================================== */
+:root {
+  --paper: #f3eddf;
+  --ink: #1c1a17;
+  --ink-soft: #4a443b;
+  --ink-faint: #8a8272;
+  --cinnabar: #b03a2e;
+  --cinnabar-soft: rgba(176, 58, 46, 0.15);
+  --line: rgba(28, 26, 23, 0.16);
+  --glass: rgba(247, 242, 231, 0.72);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Songti SC", "STSong", "Noto Serif SC", "SimSun", serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#stage {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: default;
+  touch-action: none;
+}
+#stage.brush { cursor: crosshair; }
+
+/* ---------------- 顶栏 ---------------- */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 26px;
+  z-index: 10;
+  pointer-events: none;
+}
+.topbar > * { pointer-events: auto; }
+
+.brand h1 {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0.5em;
+  padding-left: 0.5em;
+  color: var(--ink);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.brand-sub {
+  margin-top: 4px;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--ink-faint);
+}
+
+.seed-box label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+.seed-row { display: flex; gap: 8px; }
+#seedInput {
+  width: 160px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  color: var(--ink);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+#seedInput:focus {
+  border-color: var(--cinnabar);
+  box-shadow: 0 0 20px var(--cinnabar-soft);
+}
+#seedInput::placeholder { color: var(--ink-faint); }
+
+/* ---------------- 按钮 ---------------- */
+button {
+  font-family: inherit;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  padding-left: 0.2em;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.25s, border-color 0.25s, color 0.25s;
+  user-select: none;
+}
+button:hover {
+  border-color: rgba(28, 26, 23, 0.4);
+  box-shadow: 0 0 18px rgba(120, 100, 60, 0.16);
+  transform: translateY(-1px);
+}
+button:active { transform: translateY(0) scale(0.98); }
+
+button.primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+}
+button.primary.on {
+  background: var(--cinnabar);
+  border-color: var(--cinnabar);
+  color: #fff;
+  box-shadow: 0 2px 24px var(--cinnabar-soft);
+}
+
+/* ---------------- 诗跋面板 ---------------- */
+.poem-panel {
+  position: fixed;
+  right: 26px;
+  top: 130px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateX(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  pointer-events: none;
+}
+.poem-panel.show { opacity: 1; transform: translateX(0); }
+
+.poem-frame {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: rgba(255, 253, 246, 0.55);
+  backdrop-filter: blur(8px);
+  padding: 22px 16px;
+  box-shadow: 0 12px 40px rgba(80, 65, 30, 0.12);
+  max-height: 62vh;
+  overflow: hidden;
+}
+.poem-title {
+  font-size: 15px;
+  letter-spacing: 0.3em;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+.poem-body {
+  display: flex;
+  flex-direction: row-reverse;   /* 竖排：自右向左 */
+  gap: 14px;
+  font-size: 21px;
+  line-height: 2.1;
+  letter-spacing: 0.22em;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.poem-body span {
+  display: inline-block;
+}
+.poem-meta {
+  font-size: 10.5px;
+  letter-spacing: 0.3em;
+  color: var(--ink-faint);
+  padding-left: 0.3em;
+}
+
+/* ---------------- 工具栏 ---------------- */
+.toolbar {
+  position: fixed;
+  left: 26px;
+  bottom: 26px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-width: calc(100vw - 52px);
+}
+.tool-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+}
+.tool-label {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.tool-label b {
+  color: var(--cinnabar);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+select {
+  font-family: inherit;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 253, 246, 0.9);
+  color: var(--ink);
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path d='M1 1l4 4 4-4' stroke='%238a8272' stroke-width='1.4' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+select:focus { border-color: var(--cinnabar); }
+select option { background: #f7f2e7; }
+
+/* ---------------- 提示与页脚 ---------------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 110px;
+  transform: translateX(-50%) translateY(8px);
+  padding: 10px 26px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(28, 26, 23, 0.88);
+  color: var(--paper);
+  font-size: 12.5px;
+  letter-spacing: 0.24em;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+  z-index: 20;
+}
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.hint {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  z-index: 10;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  color: var(--ink-faint);
+}
+
+/* ---------------- 响应式 ---------------- */
+@media (max-width: 760px) {
+  .poem-panel { right: 12px; top: 100px; }
+  .poem-frame { padding: 14px 10px; }
+  .poem-body { font-size: 16px; gap: 8px; }
+  .toolbar { left: 12px; bottom: 12px; }
+  .hint { display: none; }
+}

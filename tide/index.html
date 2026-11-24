@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>潮汐 · TIDE</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">潮汐<span>TIDE</span></div>
+  <div class="sub">种子裁决一处海域 · 月相、潮位与浪况</div>
+</header>
+
+<main class="stage">
+  <canvas id="sea"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>潮汐种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一处海域（R）">换海</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>潮汐类型</span>
+      <select id="season"></select>
+    </label>
+
+    <div id="seasonbar" class="seasonbar"></div>
+
+    <label class="field">
+      <span>潮位时长（小时）</span>
+      <select id="hours">
+        <option value="24">24 时</option>
+        <option value="48" selected>48 时</option>
+        <option value="72">72 时</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>潮位由半日潮与日潮分项叠加：朔望为大潮，上下弦为小潮。同一颗种子，永远同一轮潮汐。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>脉境 · PULSE</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">脉境<span>PULSE</span></div>
+  <div class="sub">种子裁决一张脉网 · 节律、脉冲与传播</div>
+</header>
+
+<main class="stage">
+  <canvas id="stage"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>脉网种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一张脉网（R）">换网</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>节点数量</span>
+      <select id="nodes">
+        <option value="8">8 节点</option>
+        <option value="16" selected>16 节点</option>
+        <option value="24">24 节点</option>
+        <option value="36">36 节点</option>
+        <option value="48">48 节点</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span>边密度（每节点）</span>
+      <select id="edges">
+        <option value="1">稀疏</option>
+        <option value="2" selected>常规</option>
+        <option value="3">稠密</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span>传播速度</span>
+      <input id="speed" type="range" min="0.2" max="1.6" step="0.05" value="0.8" />
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>每个节点有固有节律（bpm），脉冲沿边传播，时延由距离与速度决定。同一颗种子，永远同一张脉网。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

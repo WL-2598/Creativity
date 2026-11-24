@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>石阵 · STONES</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">石阵<span>STONES</span></div>
+  <div class="sub">种子裁决一处石阵 · 石柱、日轨与阴影</div>
+</header>
+
+<main class="stage">
+  <canvas id="field"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>石阵种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一处石阵（R）">换阵</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>时辰</span>
+      <select id="era"></select>
+    </label>
+
+    <div id="erabar" class="erabar"></div>
+
+    <label class="field">
+      <span>石柱数量</span>
+      <select id="count">
+        <option value="4">4 柱</option>
+        <option value="8" selected>8 柱</option>
+        <option value="12">12 柱</option>
+        <option value="16">16 柱</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>石柱绕中心祭坛环列，太阳沿日轨巡行，阴影随日光流转。影长 = 柱高 ÷ tan(高度角)，方向与日方位相反。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

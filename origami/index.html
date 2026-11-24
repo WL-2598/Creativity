@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>纸境 · ORIGAMI</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">纸境<span>ORIGAMI</span></div>
+  <div class="sub">种子裁决一张折痕图 · 峰线谷线，马氏定理</div>
+</header>
+
+<main class="stage">
+  <canvas id="paper"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>折纸种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一张折痕图（R）">换图</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>纸色风格</span>
+      <select id="style"></select>
+    </label>
+
+    <div id="stylebar" class="stylebar"></div>
+
+    <label class="field">
+      <span>网格规模</span>
+      <select id="grid">
+        <option value="5">5 格</option>
+        <option value="8">8 格</option>
+        <option value="12" selected>12 格</option>
+        <option value="16">16 格</option>
+        <option value="20">20 格</option>
+        <option value="24">24 格</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span>折痕族</span>
+      <select id="families">
+        <option value="rowcol" selected>横纵全折</option>
+        <option value="row">仅横线</option>
+        <option value="col">仅纵线</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>峰线为实、谷线为虚。赋值规则经构造保证每个顶点峰谷数之差恒为二——马氏定理，天然成立。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

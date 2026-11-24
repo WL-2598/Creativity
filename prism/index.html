@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>棱镜 · PRISM — 几何生成</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="stage"></canvas>
+
+  <header class="topbar">
+    <div class="brand">
+      <h1>棱镜</h1>
+      <div class="brand-sub">PRISM · 种子为轴，几何为枝</div>
+    </div>
+    <div class="seed-box">
+      <label for="seedInput">种子</label>
+      <div class="seed-row">
+        <input id="seedInput" type="text" spellcheck="false" placeholder="种子…">
+        <button id="forgeBtn">铸 就</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toolbar">
+    <div class="tool-group">
+      <label class="tool-label">对称 <b id="symVal"></b></label>
+      <input type="range" id="symRange" min="2" max="12" step="1">
+    </div>
+    <div class="tool-group">
+      <label class="tool-label">深度 <b id="depthVal"></b></label>
+      <input type="range" id="depthRange" min="1" max="6" step="1">
+    </div>
+    <div class="tool-group">
+      <label class="tool-label">旋转 <b id="speedVal"></b></label>
+      <input type="range" id="speedRange" min="0" max="5" step="1">
+    </div>
+    <div class="tool-group">
+      <label class="tool-label">色板</label>
+      <select id="paletteSel" title="调色板"></select>
+    </div>
+  </nav>
+
+  <div id="toast" class="toast"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

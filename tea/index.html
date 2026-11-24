@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>茶境 · TEA</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">茶境<span>TEA</span></div>
+  <div class="sub">种子裁决一席茶 · 器物陈设，合于主客之仪</div>
+</header>
+
+<main class="stage">
+  <canvas id="seat"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>茶席种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一席茶（R）">换席</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>席布</span>
+      <select id="cloth"></select>
+    </label>
+
+    <div id="clothbar" class="clothbar"></div>
+
+    <label class="field">
+      <span>客位数量</span>
+      <select id="guests">
+        <option value="2">2 客</option>
+        <option value="4" selected>4 客</option>
+        <option value="6">6 客</option>
+        <option value="8">8 客</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>茶壶居主位，茶盏列客位，香炉花插分列两侧，茶点缀于席前。同一颗种子，永远同一席茶。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

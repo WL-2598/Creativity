@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>焰火 · FIREWORK</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">焰火<span>FIREWORK</span></div>
+  <div class="sub">种子裁决一组焰火 · 升空、绽放与二次爆裂</div>
+</header>
+
+<main class="stage">
+  <canvas id="sky"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>焰火种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一组焰火（R）">换火</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>焰火色调</span>
+      <select id="tone"></select>
+    </label>
+
+    <div id="tonebar" class="tonebar"></div>
+
+    <label class="field">
+      <span>焰火数量</span>
+      <select id="count">
+        <option value="3">3 枚</option>
+        <option value="6" selected>6 枚</option>
+        <option value="9">9 枚</option>
+        <option value="12">12 枚</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>每枚焰火有独立的发射延迟、爆点与粒子数，部分还会二次爆裂。同一颗种子，永远同一场焰火。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

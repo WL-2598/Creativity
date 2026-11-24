@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>晕境 · HALO</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">晕境<span>HALO</span></div>
+  <div class="sub">种子裁决一处天象 · 日晕、双虹与星芒</div>
+</header>
+
+<main class="stage">
+  <canvas id="sky"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>天象种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一处天象（R）">换象</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>天象场景</span>
+      <select id="scene"></select>
+    </label>
+
+    <div id="scenebar" class="scenebar"></div>
+
+    <label class="field">
+      <span>雾滴数量</span>
+      <select id="drops">
+        <option value="40">40 滴</option>
+        <option value="80" selected>80 滴</option>
+        <option value="120">120 滴</option>
+        <option value="160">160 滴</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span>星芒数量</span>
+      <select id="rays">
+        <option value="4">4 芒</option>
+        <option value="8" selected>8 芒</option>
+        <option value="12">12 芒</option>
+        <option value="16">16 芒</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>环带按物理角序排布：日晕 22°、主虹 42°、副虹 51°，色序亦合物理。换一颗种子，便是另一场天象。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

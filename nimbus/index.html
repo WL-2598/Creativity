@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>云图 · NIMBUS</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">云图<span>NIMBUS</span></div>
+  <div class="sub">种子裁决一片天 · 云海、雨幕、闪电与雪</div>
+</header>
+
+<main class="stage">
+  <canvas id="sky"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>天候种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一片天（R）">换天</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>指定天候</span>
+      <select id="style"></select>
+    </label>
+
+    <div id="stylebar" class="stylebar"></div>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>同一个种子永远得到同一片天；换一颗种子，便是另一场风雨。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

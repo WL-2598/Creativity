@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>墨韵 · INK RESONANCE — 宣纸宇宙</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 画卷 -->
+  <canvas id="stage"></canvas>
+
+  <!-- 顶栏 -->
+  <header class="topbar">
+    <div class="brand">
+      <h1>墨韵</h1>
+      <div class="brand-sub">INK RESONANCE · 一纸烟雨，半砚星辰</div>
+    </div>
+    <div class="seed-box">
+      <label for="seedInput">卷号</label>
+      <div class="seed-row">
+        <input id="seedInput" type="text" spellcheck="false" placeholder="卷号…">
+        <button id="enterBtn">展 卷</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 诗跋 -->
+  <aside class="poem-panel" id="poemPanel">
+    <div class="poem-frame">
+      <div class="poem-title" id="poemTitle"></div>
+      <div class="poem-body" id="poemBody"></div>
+    </div>
+    <div class="poem-meta" id="poemMeta"></div>
+  </aside>
+
+  <!-- 工具栏 -->
+  <nav class="toolbar">
+    <div class="tool-group">
+      <label class="tool-label">母题</label>
+      <select id="motifSel" title="画卷母题"></select>
+    </div>
+    <div class="tool-group">
+      <label class="tool-label">墨色 <b id="inkLabel"></b></label>
+      <button id="inkBtn">换 墨</button>
+    </div>
+    <button id="modeBtn" class="primary">落笔</button>
+    <button id="poemBtn">再题</button>
+    <button id="stampBtn">落印</button>
+    <button id="clearBtn">净纸</button>
+  </nav>
+
+  <div id="toast" class="toast"></div>
+
+  <footer class="hint">落笔模式下拖动作画 · 空格 落笔/收笔 · S 落印 · C 净纸</footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
