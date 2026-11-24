@@ -236,6 +236,16 @@ const EXHIBITS = [
     href: 'floral/',
     preview: 'previewFloral',
   },
+  {
+    key: 'go',
+    name: '棋境',
+    latin: 'GO',
+    tag: '棋局 × 气数',
+    desc: '一颗种子，一局围棋。星位起手、黑白交替，落子互不重叠，连通块的气数可精确计算，静默成局。',
+    tags: ['星位布子', '黑白交替', '连通块', '气数计算'],
+    href: 'go/',
+    preview: 'previewGo',
+  },
 ];
 
 /* ---------------- 渲染卡片 ---------------- */
@@ -262,7 +272,7 @@ for (const ex of EXHIBITS) {
 /* 统计 */
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="num">${EXHIBITS.length}</div><div class="label">件展品</div></div>
-  <div class="stat"><div class="num">175</div><div class="label">项自动化测试</div></div>
+  <div class="stat"><div class="num">182</div><div class="label">项自动化测试</div></div>
   <div class="stat"><div class="num">0</div><div class="label">外部依赖</div></div>
 `;
 
@@ -457,6 +467,14 @@ const previewers = {
     const { generateFloral } = await import('./floral/js/floral.js');
     const render = new FloralRender(canvas);
     render.setArrangement(generateFloral(randomSeed(), { materials: 3 }));
+    render.start();
+  },
+  /* 棋境：一局棋 */
+  async previewGo(canvas) {
+    const { GoRender } = await import('./go/js/render.js');
+    const { generateGo } = await import('./go/js/go.js');
+    const render = new GoRender(canvas);
+    render.setGame(generateGo(randomSeed(), { size: 19 }));
     render.start();
   },
 };

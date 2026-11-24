@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>棋境 · GO</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">棋境<span>GO</span></div>
+  <div class="sub">种子裁决一局棋 · 星位布子，黑白成局</div>
+</header>
+
+<main class="stage">
+  <canvas id="board"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>棋局种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一局棋（R）">换局</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>棋盘规模</span>
+      <select id="size">
+        <option value="9">9 路</option>
+        <option value="19" selected>19 路</option>
+        <option value="21">21 路</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>星位起手、黑白交替，落子皆不重叠。连通块的气数可精确计算——同一颗种子，永远同一局棋。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
