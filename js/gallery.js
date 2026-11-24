@@ -286,6 +286,16 @@ const EXHIBITS = [
     href: 'tea/',
     preview: 'previewTea',
   },
+  {
+    key: 'bell',
+    name: '钟磬',
+    latin: 'BELL',
+    tag: '乐律 × 编钟',
+    desc: '一颗种子，一列编钟。钟体大小定音高，种子从音阶取音布钟，再按小曲的节拍逐一敲击，声波自钟身荡开。',
+    tags: ['钟体定音', '三套调式', '节拍小曲', '声波涟漪'],
+    href: 'bell/',
+    preview: 'previewBell',
+  },
 ];
 
 /* ---------------- 渲染卡片 ---------------- */
@@ -312,7 +322,7 @@ for (const ex of EXHIBITS) {
 /* 统计 */
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="num">${EXHIBITS.length}</div><div class="label">件展品</div></div>
-  <div class="stat"><div class="num">210</div><div class="label">项自动化测试</div></div>
+  <div class="stat"><div class="num">217</div><div class="label">项自动化测试</div></div>
   <div class="stat"><div class="num">0</div><div class="label">外部依赖</div></div>
 `;
 
@@ -547,6 +557,14 @@ const previewers = {
     const { generateTeaSet } = await import('./tea/js/tea.js');
     const render = new TeaRender(canvas);
     render.setSet(generateTeaSet(randomSeed(), { guests: 4 }));
+    render.start();
+  },
+  /* 钟磬：一列编钟 */
+  async previewBell(canvas) {
+    const { BellRender } = await import('./bell/js/render.js');
+    const { generateBells } = await import('./bell/js/bell.js');
+    const render = new BellRender(canvas);
+    render.setSet(generateBells(randomSeed(), { count: 5 }));
     render.start();
   },
 };

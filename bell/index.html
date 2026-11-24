@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>钟磬 · BELL</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">钟磬<span>BELL</span></div>
+  <div class="sub">种子架起一列编钟 · 钟体定音，敲击成曲</div>
+</header>
+
+<main class="stage">
+  <canvas id="bells"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>钟架种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一列钟（R）">换钟</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>调式</span>
+      <select id="scale"></select>
+    </label>
+
+    <div id="scalebar" class="scalebar"></div>
+
+    <label class="field">
+      <span>钟数</span>
+      <select id="count">
+        <option value="3">3 钟</option>
+        <option value="5" selected>5 钟</option>
+        <option value="7">7 钟</option>
+        <option value="10">10 钟</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>钟体越大音越低，钟体越小音越高。种子从音阶中取音布钟，再按小曲的节拍逐一敲击，声波自钟身荡开。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
