@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>花相 · FLORAL</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">花相<span>FLORAL</span></div>
+  <div class="sub">种子裁决一席瓶花 · 三主构图，高低错落</div>
+</header>
+
+<main class="stage">
+  <canvas id="scene"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>花艺种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一席花艺（R）">换花</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>花器</span>
+      <select id="vessel"></select>
+    </label>
+
+    <div id="vesselbar" class="vesselbar"></div>
+
+    <label class="field">
+      <span>花材种类</span>
+      <select id="materials">
+        <option value="2">2 种</option>
+        <option value="3" selected>3 种</option>
+        <option value="4">4 种</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>主枝最高、客枝次之、使枝收势，辅枝穿插其间。同一颗种子，永远同一席花。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

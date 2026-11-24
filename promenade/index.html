@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>回廊 · PROMENADE</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">回廊<span>PROMENADE</span></div>
+  <div class="sub">种子裁决一条长廊 · 柱列、拱券与光影透视</div>
+</header>
+
+<main class="stage">
+  <canvas id="hall"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>长廊种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一条长廊（R）">换廊</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>长廊色调</span>
+      <select id="tone"></select>
+    </label>
+
+    <div id="tonebar" class="tonebar"></div>
+
+    <label class="field">
+      <span>柱列数量</span>
+      <select id="columns">
+        <option value="4">4 柱</option>
+        <option value="7" selected>7 柱</option>
+        <option value="10">10 柱</option>
+        <option value="14">14 柱</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span>拱券数量</span>
+      <select id="arches">
+        <option value="2">2 拱</option>
+        <option value="4" selected>4 拱</option>
+        <option value="6">6 拱</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>柱列与拱券沿纵深向灭点收敛，近大远小；光束自灭点方向斜入，长廊随时间缓缓前行。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

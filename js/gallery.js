@@ -216,6 +216,26 @@ const EXHIBITS = [
     href: 'tide/',
     preview: 'previewTide',
   },
+  {
+    key: 'promenade',
+    name: '回廊',
+    latin: 'PROMENADE',
+    tag: '空间 × 透视',
+    desc: '一颗种子，一条长廊。灭点、双侧柱列与拱券按纵深收敛，光束斜入，长廊随时间缓缓前行。',
+    tags: ['透视长廊', '柱列拱券', '灭点收敛', '光束游移'],
+    href: 'promenade/',
+    preview: 'previewPromenade',
+  },
+  {
+    key: 'floral',
+    name: '花相',
+    latin: 'FLORAL',
+    tag: '花艺 × 构图',
+    desc: '一颗种子，一席瓶花。主枝、客枝、使枝三主构图，高低错落、疏密有致，花材配色皆由种子裁决。',
+    tags: ['三主构图', '花材词典', '花器形制', '疏密有致'],
+    href: 'floral/',
+    preview: 'previewFloral',
+  },
 ];
 
 /* ---------------- 渲染卡片 ---------------- */
@@ -242,7 +262,7 @@ for (const ex of EXHIBITS) {
 /* 统计 */
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="num">${EXHIBITS.length}</div><div class="label">件展品</div></div>
-  <div class="stat"><div class="num">161</div><div class="label">项自动化测试</div></div>
+  <div class="stat"><div class="num">175</div><div class="label">项自动化测试</div></div>
   <div class="stat"><div class="num">0</div><div class="label">外部依赖</div></div>
 `;
 
@@ -421,6 +441,22 @@ const previewers = {
     const { generateTide } = await import('./tide/js/tide.js');
     const render = new TideRender(canvas);
     render.setTide(generateTide(randomSeed(), { hours: 48 }));
+    render.start();
+  },
+  /* 回廊：一条长廊 */
+  async previewPromenade(canvas) {
+    const { PromenadeRender } = await import('./promenade/js/render.js');
+    const { generatePromenade } = await import('./promenade/js/promenade.js');
+    const render = new PromenadeRender(canvas);
+    render.setHall(generatePromenade(randomSeed(), { columns: 7, arches: 4 }));
+    render.start();
+  },
+  /* 花相：一席瓶花 */
+  async previewFloral(canvas) {
+    const { FloralRender } = await import('./floral/js/render.js');
+    const { generateFloral } = await import('./floral/js/floral.js');
+    const render = new FloralRender(canvas);
+    render.setArrangement(generateFloral(randomSeed(), { materials: 3 }));
     render.start();
   },
 };
