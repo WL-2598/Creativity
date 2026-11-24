@@ -276,6 +276,16 @@ const EXHIBITS = [
     href: 'stones/',
     preview: 'previewStones',
   },
+  {
+    key: 'tea',
+    name: '茶境',
+    latin: 'TEA',
+    tag: '茶席 × 器物',
+    desc: '一颗种子，一席茶。茶壶居主位，茶盏列客位，香炉花插分列两侧，器物陈设合于主客之仪。',
+    tags: ['席布陈设', '主客位序', '四色釉器', '热气袅袅'],
+    href: 'tea/',
+    preview: 'previewTea',
+  },
 ];
 
 /* ---------------- 渲染卡片 ---------------- */
@@ -302,7 +312,7 @@ for (const ex of EXHIBITS) {
 /* 统计 */
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="num">${EXHIBITS.length}</div><div class="label">件展品</div></div>
-  <div class="stat"><div class="num">203</div><div class="label">项自动化测试</div></div>
+  <div class="stat"><div class="num">210</div><div class="label">项自动化测试</div></div>
   <div class="stat"><div class="num">0</div><div class="label">外部依赖</div></div>
 `;
 
@@ -529,6 +539,14 @@ const previewers = {
     const { generateStoneField } = await import('./stones/js/stones.js');
     const render = new StonesRender(canvas);
     render.setField(generateStoneField(randomSeed(), { count: 8 }));
+    render.start();
+  },
+  /* 茶境：一席茶 */
+  async previewTea(canvas) {
+    const { TeaRender } = await import('./tea/js/render.js');
+    const { generateTeaSet } = await import('./tea/js/tea.js');
+    const render = new TeaRender(canvas);
+    render.setSet(generateTeaSet(randomSeed(), { guests: 4 }));
     render.start();
   },
 };
