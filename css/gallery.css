@@ -12,12 +12,20 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+html {
+  scroll-behavior: smooth;
+}
 html, body {
   min-height: 100%;
   background: var(--bg);
   color: var(--ink);
   font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+/* 锚点滚动留白：避开吸顶导航栏 */
+#top, #hall {
+  scroll-margin-top: 72px;
 }
 
 /* 背景星尘 */

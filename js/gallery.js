@@ -386,6 +386,20 @@ searchEl.addEventListener('input', () => {
   applyFilter();
 });
 
+/* 锚点跳转：显式平滑滚动，确保点击一定生效 */
+for (const a of document.querySelectorAll('a[href^="#"]')) {
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (target) {
+      e.preventDefault();
+      // scroll-margin-top 已在 CSS 中为吸顶导航留出留白，直接滚动即可
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+}
+
 for (const ex of EXHIBITS) {
   const card = document.createElement('article');
   card.className = 'card';
