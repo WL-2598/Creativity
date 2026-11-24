@@ -186,6 +186,36 @@ const EXHIBITS = [
     href: 'smoke/',
     preview: 'previewSmoke',
   },
+  {
+    key: 'origami',
+    name: '纸境',
+    latin: 'ORIGAMI',
+    tag: '折痕 × 定理',
+    desc: '一颗种子，一张折痕图。横纵折痕的峰线谷线经构造赋值，每个顶点恒满足马氏定理，峰实谷虚、纸面呼吸。',
+    tags: ['折痕图案', '马氏定理', '峰谷赋值', '纸色风格'],
+    href: 'origami/',
+    preview: 'previewOrigami',
+  },
+  {
+    key: 'sandpit',
+    name: '沙盘',
+    latin: 'SANDPIT',
+    tag: '沙粒 × 元胞',
+    desc: '一颗种子，一处沙境。沙源落沙，元胞法则驱动沙粒从高处滑向低处，堆积自平、沙量守恒。',
+    tags: ['元胞法则', '沙粒滑落', '堆积自平', '沙量守恒'],
+    href: 'sandpit/',
+    preview: 'previewSandpit',
+  },
+  {
+    key: 'tide',
+    name: '潮汐',
+    latin: 'TIDE',
+    tag: '月相 × 潮位',
+    desc: '一颗种子，一处海域。月相盈亏、半日潮位曲线与浪况皆由种子裁决，潮水随潮位整体涨落。',
+    tags: ['月相盈亏', '半日潮位', '大潮小潮', '海浪层叠'],
+    href: 'tide/',
+    preview: 'previewTide',
+  },
 ];
 
 /* ---------------- 渲染卡片 ---------------- */
@@ -212,7 +242,7 @@ for (const ex of EXHIBITS) {
 /* 统计 */
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="num">${EXHIBITS.length}</div><div class="label">件展品</div></div>
-  <div class="stat"><div class="num">140</div><div class="label">项自动化测试</div></div>
+  <div class="stat"><div class="num">161</div><div class="label">项自动化测试</div></div>
   <div class="stat"><div class="num">0</div><div class="label">外部依赖</div></div>
 `;
 
@@ -367,6 +397,30 @@ const previewers = {
     const { generateSmoke } = await import('./smoke/js/smoke.js');
     const render = new SmokeRender(canvas);
     render.setScene(generateSmoke(randomSeed(), { sources: 2, field: 24 }));
+    render.start();
+  },
+  /* 纸境：一张折痕图 */
+  async previewOrigami(canvas) {
+    const { OrigamiRender } = await import('./origami/js/render.js');
+    const { generateOrigami } = await import('./origami/js/origami.js');
+    const render = new OrigamiRender(canvas);
+    render.setFold(generateOrigami(randomSeed(), { grid: 10 }));
+    render.start();
+  },
+  /* 沙盘：一处沙境 */
+  async previewSandpit(canvas) {
+    const { SandRender } = await import('./sandpit/js/render.js');
+    const { generateSandscape } = await import('./sandpit/js/sand.js');
+    const render = new SandRender(canvas);
+    render.setState(generateSandscape(randomSeed(), { width: 40, height: 22 }));
+    render.start();
+  },
+  /* 潮汐：一处海域 */
+  async previewTide(canvas) {
+    const { TideRender } = await import('./tide/js/render.js');
+    const { generateTide } = await import('./tide/js/tide.js');
+    const render = new TideRender(canvas);
+    render.setTide(generateTide(randomSeed(), { hours: 48 }));
     render.start();
   },
 };

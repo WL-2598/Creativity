@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>沙盘 · SANDPIT</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">沙盘<span>SANDPIT</span></div>
+  <div class="sub">种子裁决一处沙境 · 沙源落沙，元胞滑落堆积</div>
+</header>
+
+<main class="stage">
+  <canvas id="pit"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>沙境种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一处沙境（R）">换境</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>沙盘宽度（格）</span>
+      <select id="width">
+        <option value="24">24 格</option>
+        <option value="40" selected>40 格</option>
+        <option value="60">60 格</option>
+        <option value="80">80 格</option>
+        <option value="100">100 格</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span>沙盘高度（格）</span>
+      <select id="height">
+        <option value="14">14 格</option>
+        <option value="24" selected>24 格</option>
+        <option value="34">34 格</option>
+        <option value="48">48 格</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>沙粒遵循元胞法则：从高处滑向低处，直至相邻高度差不逾一格。沙量守恒，堆积自平。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
