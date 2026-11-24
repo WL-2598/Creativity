@@ -246,6 +246,16 @@ const EXHIBITS = [
     href: 'go/',
     preview: 'previewGo',
   },
+  {
+    key: 'glitch',
+    name: '光斑',
+    latin: 'GLITCH',
+    tag: '故障 × 信号',
+    desc: '一颗种子，一帧故障。行位移、色散、数据块与扫描线皆由种子裁决，数字信号在失真中显影。',
+    tags: ['行位移带', 'RGB 色散', '数据块错位', '扫描噪点'],
+    href: 'glitch/',
+    preview: 'previewGlitch',
+  },
 ];
 
 /* ---------------- 渲染卡片 ---------------- */
@@ -272,7 +282,7 @@ for (const ex of EXHIBITS) {
 /* 统计 */
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="num">${EXHIBITS.length}</div><div class="label">件展品</div></div>
-  <div class="stat"><div class="num">182</div><div class="label">项自动化测试</div></div>
+  <div class="stat"><div class="num">189</div><div class="label">项自动化测试</div></div>
   <div class="stat"><div class="num">0</div><div class="label">外部依赖</div></div>
 `;
 
@@ -475,6 +485,14 @@ const previewers = {
     const { generateGo } = await import('./go/js/go.js');
     const render = new GoRender(canvas);
     render.setGame(generateGo(randomSeed(), { size: 19 }));
+    render.start();
+  },
+  /* 光斑：一帧故障 */
+  async previewGlitch(canvas) {
+    const { GlitchRender } = await import('./glitch/js/render.js');
+    const { generateGlitch } = await import('./glitch/js/glitch.js');
+    const render = new GlitchRender(canvas);
+    render.setGlitch(generateGlitch(randomSeed(), { bands: 6, scanlines: 16 }));
     render.start();
   },
 };

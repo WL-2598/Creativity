@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>光斑 · GLITCH</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">光斑<span>GLITCH</span></div>
+  <div class="sub">种子裁决一帧故障 · 色散、位移、扫描与噪点</div>
+</header>
+
+<main class="stage">
+  <canvas id="frame"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>光斑种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一帧故障（R）">换帧</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>故障场景</span>
+      <select id="scene"></select>
+    </label>
+
+    <div id="scenebar" class="scenebar"></div>
+
+    <label class="field">
+      <span>位移带数量</span>
+      <select id="bands">
+        <option value="3">3 带</option>
+        <option value="6" selected>6 带</option>
+        <option value="10">10 带</option>
+        <option value="14">14 带</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span>扫描线数量</span>
+      <select id="scanlines">
+        <option value="6">6 线</option>
+        <option value="16" selected>16 线</option>
+        <option value="28">28 线</option>
+        <option value="40">40 线</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>行位移、色散、数据块与噪点皆由种子裁决。同一颗种子，永远同一帧故障；换一颗，便是另一场信号失真。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
