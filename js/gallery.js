@@ -296,6 +296,16 @@ const EXHIBITS = [
     href: 'bell/',
     preview: 'previewBell',
   },
+  {
+    key: 'shadow',
+    name: '影戏',
+    latin: 'SHADOW',
+    tag: '皮影 × 灯影',
+    desc: '一颗种子，几具皮影。灯火沿幕顶巡行，皮影的每个关节都按光源位置投影到底幕，影随光长。',
+    tags: ['皮影骨架', '关节投影', '灯火巡行', '三色灯调'],
+    href: 'shadow/',
+    preview: 'previewShadow',
+  },
 ];
 
 /* ---------------- 渲染卡片 ---------------- */
@@ -322,7 +332,7 @@ for (const ex of EXHIBITS) {
 /* 统计 */
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="num">${EXHIBITS.length}</div><div class="label">件展品</div></div>
-  <div class="stat"><div class="num">217</div><div class="label">项自动化测试</div></div>
+  <div class="stat"><div class="num">224</div><div class="label">项自动化测试</div></div>
   <div class="stat"><div class="num">0</div><div class="label">外部依赖</div></div>
 `;
 
@@ -565,6 +575,14 @@ const previewers = {
     const { generateBells } = await import('./bell/js/bell.js');
     const render = new BellRender(canvas);
     render.setSet(generateBells(randomSeed(), { count: 5 }));
+    render.start();
+  },
+  /* 影戏：几具皮影 */
+  async previewShadow(canvas) {
+    const { ShadowRender } = await import('./shadow/js/render.js');
+    const { generatePuppets } = await import('./shadow/js/shadow.js');
+    const render = new ShadowRender(canvas);
+    render.setSet(generatePuppets(randomSeed(), { count: 2 }));
     render.start();
   },
 };
