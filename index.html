@@ -9,7 +9,22 @@
 <body>
   <div class="bg-stars" id="bgStars"></div>
 
-  <header class="hero">
+  <!-- 顶部导航：品牌 + 分类筛选 + 搜索 -->
+  <nav class="topnav">
+    <a class="brand" href="#top">
+      <span class="brand-mark"></span>
+      <span class="brand-name">银河展厅</span>
+    </a>
+    <div class="nav-tools">
+      <div class="filters" id="filters" role="tablist" aria-label="展品分类"></div>
+      <div class="search">
+        <span class="search-icon">⌕</span>
+        <input id="search" type="search" placeholder="搜索展品…" aria-label="搜索展品">
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
     <div class="hero-mark"></div>
     <h1>银河展厅</h1>
     <p class="hero-sub">CREATIVITY WAREHOUSE · 一座由种子驱动的创意仓库</p>
@@ -18,11 +33,19 @@
       一颗种子，一个宇宙。声音、墨色、叙事，皆由代码即时生成，永不重复。
     </p>
     <div class="hero-stats" id="stats"></div>
+    <div class="hero-cta">
+      <a class="cta-btn" href="#hall">进入展厅 ↓</a>
+    </div>
   </header>
 
+  <!-- 展览展示 -->
   <main class="hall" id="hall">
     <!-- 展品卡片由脚本注入 -->
   </main>
+
+  <div class="empty" id="empty" hidden>
+    <p>没有匹配的展品，换个关键词或分类试试。</p>
+  </div>
 
   <footer class="foot">
     <span>星澜 · 墨韵 · 织梦</span>
