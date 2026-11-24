@@ -266,6 +266,16 @@ const EXHIBITS = [
     href: 'firework/',
     preview: 'previewFirework',
   },
+  {
+    key: 'stones',
+    name: '石阵',
+    latin: 'STONES',
+    tag: '遗迹 × 日轨',
+    desc: '一颗种子，一处石阵。石柱环列祭坛，太阳沿日轨巡行，阴影随日光流转，影长合于几何法则。',
+    tags: ['石柱环列', '日轨弧线', '阴影流转', '影长法则'],
+    href: 'stones/',
+    preview: 'previewStones',
+  },
 ];
 
 /* ---------------- 渲染卡片 ---------------- */
@@ -292,7 +302,7 @@ for (const ex of EXHIBITS) {
 /* 统计 */
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="num">${EXHIBITS.length}</div><div class="label">件展品</div></div>
-  <div class="stat"><div class="num">196</div><div class="label">项自动化测试</div></div>
+  <div class="stat"><div class="num">203</div><div class="label">项自动化测试</div></div>
   <div class="stat"><div class="num">0</div><div class="label">外部依赖</div></div>
 `;
 
@@ -511,6 +521,14 @@ const previewers = {
     const { generateFireworks } = await import('./firework/js/firework.js');
     const render = new FireworkRender(canvas);
     render.setShow(generateFireworks(randomSeed(), { count: 5 }));
+    render.start();
+  },
+  /* 石阵：一处石阵 */
+  async previewStones(canvas) {
+    const { StonesRender } = await import('./stones/js/render.js');
+    const { generateStoneField } = await import('./stones/js/stones.js');
+    const render = new StonesRender(canvas);
+    render.setField(generateStoneField(randomSeed(), { count: 8 }));
     render.start();
   },
 };
