@@ -136,6 +136,56 @@ const EXHIBITS = [
     href: 'texture/',
     preview: 'previewTexture',
   },
+  {
+    key: 'starweb',
+    name: '织星',
+    latin: 'STARWEB',
+    tag: '星网 × 图论',
+    desc: '一颗种子，一片星网。星点散布、星等分级，以最小生成树连缀成网，星官之名取连线最多的一域。',
+    tags: ['图论连网', '最小生成树', '星等闪烁', '星官命名'],
+    href: 'starweb/',
+    preview: 'previewStarweb',
+  },
+  {
+    key: 'print',
+    name: '拓境',
+    latin: 'PRINT',
+    tag: '版画 × 套印',
+    desc: '一颗种子，一幅版画。多块印版各成形状与墨色，按先浅后深层层套印，错位之间见手工呼吸。',
+    tags: ['多版套色', '半调图案', '套印错位', '纸纹压痕'],
+    href: 'print/',
+    preview: 'previewPrint',
+  },
+  {
+    key: 'pulse',
+    name: '脉境',
+    latin: 'PULSE',
+    tag: '脉网 × 节律',
+    desc: '一颗种子，一张脉网。节点各有固有节律，脉冲沿边传播，时延由距离与速度决定，如心跳与神经。',
+    tags: ['节律脉动', '脉冲传播', '时延计算', '近邻连网'],
+    href: 'pulse/',
+    preview: 'previewPulse',
+  },
+  {
+    key: 'halo',
+    name: '晕境',
+    latin: 'HALO',
+    tag: '天象 × 光学',
+    desc: '一颗种子，一处天象。日晕、主虹、副虹按物理角序排布，星芒射出、雾滴闪烁，晴日清月雾晨皆成景。',
+    tags: ['大气光学', '双虹角序', '星芒辐射', '雾滴闪烁'],
+    href: 'halo/',
+    preview: 'previewHalo',
+  },
+  {
+    key: 'smoke',
+    name: '烟境',
+    latin: 'SMOKE',
+    tag: '流烟 × 流场',
+    desc: '一颗种子，一处烟境。烟源布底、流场织空，烟羽在流场中升腾、翻卷、扩散，如烟似雾、永不重样。',
+    tags: ['粒子烟羽', '流场驱动', '升腾扩散', '四色烟调'],
+    href: 'smoke/',
+    preview: 'previewSmoke',
+  },
 ];
 
 /* ---------------- 渲染卡片 ---------------- */
@@ -162,7 +212,7 @@ for (const ex of EXHIBITS) {
 /* 统计 */
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="num">${EXHIBITS.length}</div><div class="label">件展品</div></div>
-  <div class="stat"><div class="num">112</div><div class="label">项自动化测试</div></div>
+  <div class="stat"><div class="num">140</div><div class="label">项自动化测试</div></div>
   <div class="stat"><div class="num">0</div><div class="label">外部依赖</div></div>
 `;
 
@@ -277,6 +327,46 @@ const previewers = {
     const { generatePattern } = await import('./texture/js/pattern.js');
     const render = new TextureRender(canvas);
     render.setPattern(generatePattern(randomSeed()));
+    render.start();
+  },
+  /* 织星：一片星网 */
+  async previewStarweb(canvas) {
+    const { StarRender } = await import('./starweb/js/render.js');
+    const { generateStarfield } = await import('./starweb/js/constellation.js');
+    const render = new StarRender(canvas);
+    render.setField(generateStarfield(randomSeed(), { stars: 22, link: 1 }));
+    render.start();
+  },
+  /* 拓境：一幅版画 */
+  async previewPrint(canvas) {
+    const { PrintRender } = await import('./print/js/render.js');
+    const { generatePrint } = await import('./print/js/print.js');
+    const render = new PrintRender(canvas);
+    render.setPrint(generatePrint(randomSeed(), { plates: 3 }));
+    render.start();
+  },
+  /* 脉境：一张脉网 */
+  async previewPulse(canvas) {
+    const { PulseRender } = await import('./pulse/js/render.js');
+    const { generatePulseNet } = await import('./pulse/js/pulse.js');
+    const render = new PulseRender(canvas);
+    render.setNet(generatePulseNet(randomSeed(), { nodes: 14 }));
+    render.start();
+  },
+  /* 晕境：一处天象 */
+  async previewHalo(canvas) {
+    const { HaloRender } = await import('./halo/js/render.js');
+    const { generateHalo } = await import('./halo/js/halo.js');
+    const render = new HaloRender(canvas);
+    render.setScene(generateHalo(randomSeed()));
+    render.start();
+  },
+  /* 烟境：一处烟境 */
+  async previewSmoke(canvas) {
+    const { SmokeRender } = await import('./smoke/js/render.js');
+    const { generateSmoke } = await import('./smoke/js/smoke.js');
+    const render = new SmokeRender(canvas);
+    render.setScene(generateSmoke(randomSeed(), { sources: 2, field: 24 }));
     render.start();
   },
 };

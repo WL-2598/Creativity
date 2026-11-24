@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>拓境 · PRINT</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">拓境<span>PRINT</span></div>
+  <div class="sub">种子裁决一幅版画 · 多版套色与压印错位</div>
+</header>
+
+<main class="stage">
+  <canvas id="paper"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>版画种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一幅版画（R）">换版</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>套色风格</span>
+      <select id="style"></select>
+    </label>
+
+    <div id="stylebar" class="stylebar"></div>
+
+    <label class="field">
+      <span>印版数量</span>
+      <select id="plates">
+        <option value="2">2 版</option>
+        <option value="3" selected>3 版</option>
+        <option value="4">4 版</option>
+        <option value="5">5 版</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>每块印版有形状、密度与墨色，按先浅后深的顺序层层套印；套印错位带来手工的呼吸感。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>织星 · STARWEB</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">织星<span>STARWEB</span></div>
+  <div class="sub">种子裁决一片星网 · 星点、连线与星官之名</div>
+</header>
+
+<main class="stage">
+  <canvas id="sky"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>星网种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一片星网（R）">换网</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>星点数量</span>
+      <select id="stars">
+        <option value="12">12 星</option>
+        <option value="24" selected>24 星</option>
+        <option value="36">36 星</option>
+        <option value="50">50 星</option>
+        <option value="70">70 星</option>
+        <option value="90">90 星</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span>连线密度</span>
+      <select id="link">
+        <option value="1" selected>仅生成树</option>
+        <option value="2">近邻补边</option>
+        <option value="3">密集连网</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>连线以最小生成树连缀，保证星网全域连通、无环；补边按近邻密度叠加，星官之名取连线最多的一域。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

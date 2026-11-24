@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>烟境 · SMOKE</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="hud">
+  <div class="title">烟境<span>SMOKE</span></div>
+  <div class="sub">种子布下烟源与流场 · 烟随流场升腾翻卷</div>
+</header>
+
+<main class="stage">
+  <canvas id="scene"></canvas>
+
+  <aside class="panel">
+    <label class="field">
+      <span>烟境种子</span>
+      <div class="row">
+        <input id="seed" type="number" min="1" step="1" />
+        <button id="random" title="换一处烟境（R）">换境</button>
+      </div>
+    </label>
+
+    <label class="field">
+      <span>烟色基调</span>
+      <select id="tone"></select>
+    </label>
+
+    <div id="tonebar" class="tonebar"></div>
+
+    <label class="field">
+      <span>烟源数量</span>
+      <select id="sources">
+        <option value="1">1 源</option>
+        <option value="2" selected>2 源</option>
+        <option value="3">3 源</option>
+        <option value="4">4 源</option>
+        <option value="5">5 源</option>
+        <option value="6">6 源</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span>流场精度</span>
+      <select id="field">
+        <option value="16">16 格</option>
+        <option value="32" selected>32 格</option>
+        <option value="48">48 格</option>
+        <option value="64">64 格</option>
+      </select>
+    </label>
+
+    <div class="hint">
+      <div id="info" class="info">—</div>
+      <p>烟羽由流场驱动：同一颗种子，流场与烟源皆确定；粒子在流场中升腾、翻卷、扩散，如烟似雾。</p>
+    </div>
+  </aside>
+</main>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
