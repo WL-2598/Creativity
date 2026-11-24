@@ -9,6 +9,7 @@ const EXHIBITS = [
   {
     key: 'starlark',
     name: '星澜',
+    category: '声律',
     latin: 'STELLAR ECHO',
     tag: '声音 × 视觉',
     desc: '一颗种子，一个音乐宇宙。纯合成生成式环境音乐与实时视觉宇宙，声画同源，持续呼吸演化，永不重复。',
@@ -19,6 +20,7 @@ const EXHIBITS = [
   {
     key: 'inkflow',
     name: '墨韵',
+    category: '文心',
     latin: 'INK RESONANCE',
     tag: '墨色 × 诗心',
     desc: '一座宣纸宇宙。种子生成水墨画卷与同源绝句，可落笔、题诗、换墨、落印，画与诗共享同一条脉络。',
@@ -29,6 +31,7 @@ const EXHIBITS = [
   {
     key: 'storyteller',
     name: '织梦',
+    category: '文心',
     latin: 'STORYWEAVER',
     tag: '叙事 × 星图',
     desc: '一颗种子织出一则星夜短篇。主题、人物、事件、余韵皆由种子生成，打字机式逐字显现，星图随之流转。',
@@ -39,6 +42,7 @@ const EXHIBITS = [
   {
     key: 'floating',
     name: '浮生',
+    category: '自然',
     latin: 'FLOATING LIVES',
     tag: '生态 × 涌现',
     desc: '一瓶之中，万物自生。种子在瓶中布下浮游、游鱼与水草，它们在光照下生长、捕食、群游、繁衍与死亡，涌现生机。',
@@ -49,6 +53,7 @@ const EXHIBITS = [
   {
     key: 'prism',
     name: '棱镜',
+    category: '形影',
     latin: 'PRISM',
     tag: '几何 × 辉光',
     desc: '种子为轴，几何为枝。递归分生与多重对称铸就精密辉光的几何构图，于缓缓旋转中显现数学之美。',
@@ -59,6 +64,7 @@ const EXHIBITS = [
   {
     key: 'lumen',
     name: '流光',
+    category: '形影',
     latin: 'LUMEN',
     tag: '光绘 × 磷光',
     desc: '执光为笔，暗处生辉。种子点亮流光丝带，亦可执笔绘光，让磷光在深夜里游走绵长。',
@@ -69,6 +75,7 @@ const EXHIBITS = [
   {
     key: 'rift',
     name: '裂隙',
+    category: '山河',
     latin: 'RIFT',
     tag: '山河 × 地图',
     desc: '一纸之间，山河自成。种子生成分形地形，等高线、水系、林雪与图框在其中静默生长。',
@@ -79,6 +86,7 @@ const EXHIBITS = [
   {
     key: 'crystalline',
     name: '晶境',
+    category: '自然',
     latin: 'CRYSTALLINE',
     tag: '生长 × 矿质',
     desc: '一颗种子，一片矿脉。种子落下晶种，晶体按邻接法则逐格生长，聚簇成簇、次序展开，矿物色光在暗处晶闪。',
@@ -89,6 +97,7 @@ const EXHIBITS = [
   {
     key: 'forma',
     name: '形境',
+    category: '自然',
     latin: 'FORMA',
     tag: '植物 × 形态',
     desc: '一颗种子，一株生灵。L 系统生长出乔木、花卉、芳草与蕨类，枝干渐细、叶花落位，风中摇曳次第舒展。',
@@ -99,6 +108,7 @@ const EXHIBITS = [
   {
     key: 'nimbus',
     name: '云图',
+    category: '山河',
     latin: 'NIMBUS',
     tag: '天候 × 气象',
     desc: '一颗种子，一片天空。云海漂移、雨幕斜织、闪电裂空、雪落无声，晨雾、夜雨、暮霞、雪云四种天候各成世界。',
@@ -109,6 +119,7 @@ const EXHIBITS = [
   {
     key: 'mechanism',
     name: '机枢',
+    category: '器物',
     latin: 'MECHANISM',
     tag: '机械 × 传动',
     desc: '一颗种子，一套机械。种子裁决一组相互啮合的齿轮：齿数定传动比、转向交替，外加一只钟摆，静静运转。',
@@ -119,6 +130,7 @@ const EXHIBITS = [
   {
     key: 'soundscape',
     name: '声境',
+    category: '声律',
     latin: 'SOUNDSCAPE',
     tag: '乐谱 × 声波',
     desc: '一颗种子，一段乐谱。种子生成五声旋律与和声进行，Web Audio 实时合成演奏，声波在示波器中实时展开。',
@@ -129,6 +141,7 @@ const EXHIBITS = [
   {
     key: 'texture',
     name: '织理',
+    category: '文心',
     latin: 'TEXTURE',
     tag: '纹样 × 对称',
     desc: '一颗种子，一张纹样。经纬交织成编织、四色嵌合成瓷砖、层层放射成曼陀罗，三种图案各成锦面。',
@@ -139,6 +152,7 @@ const EXHIBITS = [
   {
     key: 'starweb',
     name: '织星',
+    category: '山河',
     latin: 'STARWEB',
     tag: '星网 × 图论',
     desc: '一颗种子，一片星网。星点散布、星等分级，以最小生成树连缀成网，星官之名取连线最多的一域。',
@@ -149,6 +163,7 @@ const EXHIBITS = [
   {
     key: 'print',
     name: '拓境',
+    category: '文心',
     latin: 'PRINT',
     tag: '版画 × 套印',
     desc: '一颗种子，一幅版画。多块印版各成形状与墨色，按先浅后深层层套印，错位之间见手工呼吸。',
@@ -159,6 +174,7 @@ const EXHIBITS = [
   {
     key: 'pulse',
     name: '脉境',
+    category: '山河',
     latin: 'PULSE',
     tag: '脉网 × 节律',
     desc: '一颗种子，一张脉网。节点各有固有节律，脉冲沿边传播，时延由距离与速度决定，如心跳与神经。',
@@ -169,6 +185,7 @@ const EXHIBITS = [
   {
     key: 'halo',
     name: '晕境',
+    category: '形影',
     latin: 'HALO',
     tag: '天象 × 光学',
     desc: '一颗种子，一处天象。日晕、主虹、副虹按物理角序排布，星芒射出、雾滴闪烁，晴日清月雾晨皆成景。',
@@ -179,6 +196,7 @@ const EXHIBITS = [
   {
     key: 'smoke',
     name: '烟境',
+    category: '自然',
     latin: 'SMOKE',
     tag: '流烟 × 流场',
     desc: '一颗种子，一处烟境。烟源布底、流场织空，烟羽在流场中升腾、翻卷、扩散，如烟似雾、永不重样。',
@@ -189,6 +207,7 @@ const EXHIBITS = [
   {
     key: 'origami',
     name: '纸境',
+    category: '文心',
     latin: 'ORIGAMI',
     tag: '折痕 × 定理',
     desc: '一颗种子，一张折痕图。横纵折痕的峰线谷线经构造赋值，每个顶点恒满足马氏定理，峰实谷虚、纸面呼吸。',
@@ -199,6 +218,7 @@ const EXHIBITS = [
   {
     key: 'sandpit',
     name: '沙盘',
+    category: '山河',
     latin: 'SANDPIT',
     tag: '沙粒 × 元胞',
     desc: '一颗种子，一处沙境。沙源落沙，元胞法则驱动沙粒从高处滑向低处，堆积自平、沙量守恒。',
@@ -209,6 +229,7 @@ const EXHIBITS = [
   {
     key: 'tide',
     name: '潮汐',
+    category: '山河',
     latin: 'TIDE',
     tag: '月相 × 潮位',
     desc: '一颗种子，一处海域。月相盈亏、半日潮位曲线与浪况皆由种子裁决，潮水随潮位整体涨落。',
@@ -219,6 +240,7 @@ const EXHIBITS = [
   {
     key: 'promenade',
     name: '回廊',
+    category: '山河',
     latin: 'PROMENADE',
     tag: '空间 × 透视',
     desc: '一颗种子，一条长廊。灭点、双侧柱列与拱券按纵深收敛，光束斜入，长廊随时间缓缓前行。',
@@ -229,6 +251,7 @@ const EXHIBITS = [
   {
     key: 'floral',
     name: '花相',
+    category: '自然',
     latin: 'FLORAL',
     tag: '花艺 × 构图',
     desc: '一颗种子，一席瓶花。主枝、客枝、使枝三主构图，高低错落、疏密有致，花材配色皆由种子裁决。',
@@ -239,6 +262,7 @@ const EXHIBITS = [
   {
     key: 'go',
     name: '棋境',
+    category: '器物',
     latin: 'GO',
     tag: '棋局 × 气数',
     desc: '一颗种子，一局围棋。星位起手、黑白交替，落子互不重叠，连通块的气数可精确计算，静默成局。',
@@ -249,6 +273,7 @@ const EXHIBITS = [
   {
     key: 'glitch',
     name: '光斑',
+    category: '形影',
     latin: 'GLITCH',
     tag: '故障 × 信号',
     desc: '一颗种子，一帧故障。行位移、色散、数据块与扫描线皆由种子裁决，数字信号在失真中显影。',
@@ -259,6 +284,7 @@ const EXHIBITS = [
   {
     key: 'firework',
     name: '焰火',
+    category: '形影',
     latin: 'FIREWORK',
     tag: '绽放 × 夜空',
     desc: '一颗种子，一场焰火。每枚焰火有独立的发射延迟与爆点，升空、绽放、坠落，部分还会二次爆裂。',
@@ -269,6 +295,7 @@ const EXHIBITS = [
   {
     key: 'stones',
     name: '石阵',
+    category: '器物',
     latin: 'STONES',
     tag: '遗迹 × 日轨',
     desc: '一颗种子，一处石阵。石柱环列祭坛，太阳沿日轨巡行，阴影随日光流转，影长合于几何法则。',
@@ -279,6 +306,7 @@ const EXHIBITS = [
   {
     key: 'tea',
     name: '茶境',
+    category: '器物',
     latin: 'TEA',
     tag: '茶席 × 器物',
     desc: '一颗种子，一席茶。茶壶居主位，茶盏列客位，香炉花插分列两侧，器物陈设合于主客之仪。',
@@ -289,6 +317,7 @@ const EXHIBITS = [
   {
     key: 'bell',
     name: '钟磬',
+    category: '声律',
     latin: 'BELL',
     tag: '乐律 × 编钟',
     desc: '一颗种子，一列编钟。钟体大小定音高，种子从音阶取音布钟，再按小曲的节拍逐一敲击，声波自钟身荡开。',
@@ -299,6 +328,7 @@ const EXHIBITS = [
   {
     key: 'shadow',
     name: '影戏',
+    category: '器物',
     latin: 'SHADOW',
     tag: '皮影 × 灯影',
     desc: '一颗种子，几具皮影。灯火沿幕顶巡行，皮影的每个关节都按光源位置投影到底幕，影随光长。',
@@ -310,12 +340,61 @@ const EXHIBITS = [
 
 /* ---------------- 渲染卡片 ---------------- */
 const hall = document.getElementById('hall');
+
+// 分类集合（按首次出现顺序）
+const CATEGORY_ORDER = ['声律', '文心', '自然', '形影', '山河', '器物'];
+
+// 分类筛选条
+const filtersEl = document.getElementById('filters');
+const makeFilter = (label, key) => {
+  const b = document.createElement('button');
+  b.className = 'filter' + (key === 'all' ? ' active' : '');
+  b.textContent = label;
+  b.dataset.cat = key;
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.filter').forEach(x => x.classList.toggle('active', x === b));
+    state.cat = key;
+    applyFilter();
+  });
+  return b;
+};
+filtersEl.appendChild(makeFilter('全部', 'all'));
+for (const c of CATEGORY_ORDER) filtersEl.appendChild(makeFilter(c, c));
+
+// 搜索
+const searchEl = document.getElementById('search');
+const emptyEl = document.getElementById('empty');
+
+const state = { cat: 'all', q: '' };
+
+function applyFilter() {
+  let visible = 0;
+  const q = state.q.trim().toLowerCase();
+  for (const card of document.querySelectorAll('.card')) {
+    const cat = card.dataset.category;
+    const text = card.dataset.search.toLowerCase();
+    const show = (state.cat === 'all' || cat === state.cat) &&
+      (!q || text.includes(q));
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  }
+  emptyEl.hidden = visible !== 0;
+}
+
+searchEl.addEventListener('input', () => {
+  state.q = searchEl.value;
+  applyFilter();
+});
+
 for (const ex of EXHIBITS) {
   const card = document.createElement('article');
   card.className = 'card';
+  card.dataset.category = ex.category;
+  card.dataset.search = [ex.name, ex.latin, ex.tag, ex.desc, ex.category, ...ex.tags].join(' ');
   card.innerHTML = `
     <div class="preview">
       <span class="tag">${ex.tag}</span>
+      <span class="cat">${ex.category}</span>
       <canvas data-preview="${ex.key}"></canvas>
     </div>
     <div class="card-body">
@@ -332,6 +411,7 @@ for (const ex of EXHIBITS) {
 /* 统计 */
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="num">${EXHIBITS.length}</div><div class="label">件展品</div></div>
+  <div class="stat"><div class="num">${CATEGORY_ORDER.length}</div><div class="label">个分类</div></div>
   <div class="stat"><div class="num">224</div><div class="label">项自动化测试</div></div>
   <div class="stat"><div class="num">0</div><div class="label">外部依赖</div></div>
 `;
